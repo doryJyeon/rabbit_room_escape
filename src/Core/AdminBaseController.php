@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Core;
+
+use App\Helpers\ToastMsg;
+use App\Models\Admin\Auth;
+
+class AdminBaseController extends ToastMsg
+{
+  public function __construct()
+  {
+    if (!Auth::authCheck()) {
+      header("Location: /admin/login");
+      exit;
+    }
+  }
+  private function getUrl(): string
+  {
+    $currentUrl = $_SERVER['REQUEST_URI'];
+    preg_match('/\/admin\/([^\/]+)/', $currentUrl, $activeUrl);
+    return $activeUrl[1] ?? "";
+  }
+  protected function render(string $view, array $data = []): void
+  {
+    $activeUrl = ["activeUrl" => $this->getUrl()];
+    // create 필요한 페이지 url 모음. ex) admin/thema->thema 해당 부분 일치 시 생성
+    $creates = [
+      "thema"
+    ];
+    // key = 메뉴명, menu = admin/menu: url 주소
+    $navs = [
+      "테마 관리" => [
+        "menu" => "thema",
+        "icon" => "bi-house-lock"
+      ],
+      "장르 관리" => [
+        "menu" => "genre",
+        "icon" => "bi-bookmark-star"
+      ],
+    ];
+    $mergeData = array_merge($data, $navs, $activeUrl, $creates);
+    extract($mergeData);
+    include __DIR__ . '/../Views/layout/header.php';
+    include __DIR__ . '/../Views/layout/admin_nav.php';
+    include __DIR__ . '/../Views/admin/' . $view . '.php';
+    include __DIR__ . '/../Views/layout/admin_footer.php';
+  }
+}

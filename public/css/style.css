@@ -1,0 +1,78 @@
+:root {
+  --primary-color: darkslateblue;
+}
+
+/* bootstrap 기존 style 덮어쓰기 */
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+  opacity: .9;
+}
+
+.border-primary {
+  border-color: var(--primary-color) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.nav-link.active {
+  background-color: var(--primary-color) !important;
+}
+
+
+/* 새로운 style */
+.w-70 {
+  width: 70%;
+}
+
+.mw-400 {
+  max-width: 400px;
+}
+
+.keep-all {
+  word-break: keep-all;
+}
+
+.two-line-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* admin 전용 */
+.admin-home-bg {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(110deg, rgb(101, 121, 155), rgb(94, 37, 99) 68%, #3b37ad);
+  background-size: 300% 300%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.reverse-img {
+  transform: scaleX(-1);
+}
