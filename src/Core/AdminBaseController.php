@@ -45,8 +45,13 @@ class AdminBaseController extends ToastMsg
       "adminPosition" => $_SESSION['admin']['position'] ?? "staff",
     ];
 
-    $mergeData = array_merge($data, $navs, $activeUrl, $creates, $adminInfo);
-    extract($mergeData);
+    extract(array_merge(
+      $data,
+      $navs,
+      $activeUrl,
+      $creates,
+      $adminInfo
+    ));
     include __DIR__ . '/../Views/layout/header.php';
     include __DIR__ . '/../Views/layout/admin_nav.php';
     include __DIR__ . '/../Views/admin/' . $view . '.php';
