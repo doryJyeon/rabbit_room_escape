@@ -83,20 +83,6 @@
   </tbody>
 </table>
 
-<!-- toast message -->
-<div class="toast-container top-0 end-0 mt-2 me-2" id="bodyToast">
-  <div class="toast" role="alert" aria-atomic="true" data-bs-delay="3000">
-    <div class="toast-header">
-      <i class="bi bi-bell text-warning"></i>
-      <strong class="me-auto">Warning!</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      * 표시가 있는 항목에 값을 입력해주세요.
-    </div>
-  </div>
-</div>
-
 <script>
   // 값 체크해서 submit
   function checkValues() {
@@ -104,8 +90,8 @@
     const inputs = document.querySelectorAll('input[required]');
     for (const input of inputs) {
       if (!input.value.trim()) {
-        // 없으면 toast message 띄우고 종료
-        toastMsgShow();
+        // JS toast message
+        toastMsgShow("* 표시가 있는 항목에 값을 입력해주세요.");
         return;
       }
     }

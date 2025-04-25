@@ -83,20 +83,6 @@ $isCreate = isset($themaInfo) ? false : true;
   <a class="btn btn-primary my-4 w-auto" href="/admin/thema">목록보기</a>
 </div>
 
-<!-- toast message -->
-<div class="toast-container top-0 end-0 mt-2 me-2" id="bodyToast">
-  <div class="toast" role="alert" aria-atomic="true" data-bs-delay="3000">
-    <div class="toast-header">
-      <i class="bi bi-bell text-warning"></i>
-      <strong class="me-auto">Warning!</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      * 표시가 있는 항목에 값을 입력해주세요.
-    </div>
-  </div>
-</div>
-
 <script>
   // 장르 onchange 시 hidden input 값 변경
   function changeGenreIds() {
@@ -119,9 +105,8 @@ $isCreate = isset($themaInfo) ? false : true;
     const inputs = document.querySelectorAll('input[required], textarea[required], select[required]');
     for (const input of inputs) {
       if (!input.value.trim()) {
-        // 없으면 toast message 띄우고 종료
-        const toastEls = document.querySelectorAll("#bodyToast .toast");
-        toastEls.forEach(el => new bootstrap.Toast(el).show());
+        // JS toast message
+        showToastMsg("* 표시가 있는 항목에 값을 입력해주세요.");
         return;
       }
     }
