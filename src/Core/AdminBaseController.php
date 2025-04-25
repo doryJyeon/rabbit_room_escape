@@ -38,7 +38,14 @@ class AdminBaseController extends ToastMsg
         "icon" => "bi-bookmark-star"
       ],
     ];
-    $mergeData = array_merge($data, $navs, $activeUrl, $creates);
+    // admin user 정보
+    $adminInfo = [
+      "adminId" => $_SESSION['admin']['id'] ?? null,
+      "adminName" => $_SESSION['admin']['login_id'] ?? "Admin",
+      "adminPosition" => $_SESSION['admin']['position'] ?? "staff",
+    ];
+
+    $mergeData = array_merge($data, $navs, $activeUrl, $creates, $adminInfo);
     extract($mergeData);
     include __DIR__ . '/../Views/layout/header.php';
     include __DIR__ . '/../Views/layout/admin_nav.php';

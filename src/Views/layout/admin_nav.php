@@ -15,7 +15,7 @@
       <?php endforeach; ?>
 
       <!-- only sys admin -->
-      <?php if (1) : ?>
+      <?php if ($adminPosition === "sys_admin") : ?>
         <li class="nav-item">
           <a href="/admin/member" class="nav-link text-white <?= ($activeUrl === "member") ? "active" : "" ?>">
             <i class="bi bi-person-fill-gear me-1"></i>
@@ -28,7 +28,7 @@
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-person-circle me-2"></i>
-        <strong>Admin</strong>
+        <strong><?= $adminName ?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
         <li><a class="dropdown-item" href="/admin/logout">비밀번호 변경</a></li>
