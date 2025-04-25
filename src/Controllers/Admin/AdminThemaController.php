@@ -3,9 +3,9 @@
 namespace App\Controllers\Admin;
 
 use App\Core\AdminBaseController;
-use App\Models\Admin\Thema;
-use App\Models\Admin\Genre;
-use App\Models\Admin\ThemaGenres;
+use App\Models\Thema;
+use App\Models\Genre;
+use App\Models\ThemaGenres;
 use Exception;
 
 class AdminThemaController extends AdminBaseController

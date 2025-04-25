@@ -3,7 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Core\AdminBaseController;
-use App\Models\Admin\Genre;
+use App\Models\Genre;
 use Exception;
 
 class AdminGenreController extends AdminBaseController
