@@ -1,7 +1,9 @@
 <div class="w-full vh-100 overflow-hidden d-flex bg-secondary">
   <!-- header->nav -->
   <header class="w-100 d-flex flex-column p-3 text-bg-dark vh-100" style="max-width: 220px;">
-    <img src="/images/logo.png" alt="logo" width="60" class="mx-auto mt-2" />
+    <a href="/admin/" class="d-block text-center">
+      <img src="/images/logo.png" alt="logo" width="60" class="mx-auto mt-2" />
+    </a>
     <hr>
 
     <ul class="nav nav-pills flex-column mb-auto">

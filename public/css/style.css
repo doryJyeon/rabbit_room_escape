@@ -28,6 +28,10 @@
   background-color: var(--primary-color) !important;
 }
 
+.carousel-indicators [data-bs-target] {
+  background-color: var(--primary-color) !important;
+}
+
 
 /* 새로운 style */
 .w-70 {
@@ -38,8 +42,32 @@
   max-width: 400px;
 }
 
+.fs-sm {
+  font-size: .9rem !important;
+}
+
+.fs-lg {
+  font-size: 3rem !important;
+}
+
+.ff-pan {
+  font-family: "Nanum Pen Script", cursive;
+}
+
 .keep-all {
   word-break: keep-all;
+}
+
+.text-logo-color {
+  color: rgb(211,176,0);
+}
+
+.header-logo {
+  height: 66px;
+}
+
+.img-bright {
+  filter: brightness(1.12);
 }
 
 .two-line-ellipsis {
@@ -49,6 +77,68 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.reverse-img {
+  transform: scaleX(-1);
+}
+
+/* user 전용 */
+.main-banner {
+  width: 100%;
+  height: 200px;
+  background-image: url("/images/page_benner2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  line-height: 220px;
+  position: relative;
+}
+.main-banner.banner-bic {
+  height: 400px;
+  line-height: 400px;
+}
+
+.benner-font {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  opacity: .9;
+}
+
+.benner-gradient {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(110deg, rgb(101, 121, 155), rgb(178, 99, 185) 68%, #3b37ad);
+  background-size: 300% 300%;
+  animation: gradientMove 15s ease infinite;
+  z-index: 1;
+  opacity: .5;
+}
+
+.nav-contour > li >.contour-line {
+  width: auto;
+  height: auto;
+  position: relative;
+}
+.nav-contour > li:not(:last-child) >.contour-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 1rem;
+  background-color: gray;
+}
+
 
 /* admin 전용 */
 .admin-home-bg {
@@ -71,8 +161,4 @@
   100% {
     background-position: 0% 50%;
   }
-}
-
-.reverse-img {
-  transform: scaleX(-1);
 }

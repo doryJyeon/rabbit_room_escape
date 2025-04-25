@@ -9,3 +9,7 @@
 
 </article>
 <hr class="border-3 mt-0 border-primary bg-primary opacity-50" />
+
+<div class="w-100 text-center">
+  <a href="/" class="btn btn-lg btn-primary mx-auto d-inline-block fw-light px-4">홈페이지 이동</a>
+</div>
