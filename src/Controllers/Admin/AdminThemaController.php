@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Core\AdminBaseController;
 use App\Models\Thema;
+use App\Models\ThemaPrice;
 use App\Models\Genre;
 use App\Models\ThemaGenres;
 use Exception;
@@ -22,11 +23,13 @@ class AdminThemaController extends AdminBaseController
   public function info($id)
   {
     $thema = Thema::findId($id);
+    $themaPrice = ThemaPrice::getPrice($id);
     $genreList = Genre::getAll();
     $connectGenres = ThemaGenres::getGenre($id);
     $this->render("thema_detail", [
       "title" => "Admin-Thema detail",
       "themaInfo" => $thema,
+      "themaPrice" => $themaPrice,
       "genreList" => $genreList,
       "connectGenres" => $connectGenres
     ]);
@@ -59,6 +62,10 @@ class AdminThemaController extends AdminBaseController
       throw $this->setToastMsg("error", $err->getMessage(), "/admin/thema/create");
     }
 
+    // price save
+    if (!empty($data['persons_min'])) {
+      $this->priceUpdate($themaId, $data['persons_min'], $data['persons_max']);
+    }
     // genre save
     if (!empty($_POST['genreIds'])) {
       $this->genreUpdate($themaId);
@@ -91,11 +98,34 @@ class AdminThemaController extends AdminBaseController
       throw $this->setToastMsg("error", $err->getMessage(), "/admin/thema");
     }
 
+    // price save
+    if (!empty($data['persons_min'])) {
+      $this->priceUpdate($themaId, $data['persons_min'], $data['persons_max']);
+    }
     // genre save
     if (!empty($_POST['genreIds'])) {
       $this->genreUpdate($themaId);
     }
     $this->setToastMsg("success", "수정했습니다.", "/admin/thema/$themaId");
+  }
+
+  // thema price create/update
+  private function priceUpdate($themaId, $min, $max)
+  {
+    try {
+      // 기존 금액 삭제
+      ThemaPrice::deleteThemaId($themaId);
+
+      for ($i = $min; $i <= $max; $i++) {
+        ThemaPrice::create([
+          "thema_id" => $themaId,
+          "person" => $i,
+          "price" => str_replace(",", "", $_POST["price$i"])
+        ]);
+      }
+    } catch (Exception $err) {
+      throw $this->setToastMsg("error", "금액 추가 실패\n" . $err, "/admin/thema/$themaId");
+    }
   }
 
   // thema-genre_code id 매칭
@@ -115,7 +145,7 @@ class AdminThemaController extends AdminBaseController
         ]);
       }
     } catch (Exception $err) {
-      throw $this->setToastMsg("error", "장르 추가 실패\n" . $err, "/admin/thema");
+      throw $this->setToastMsg("error", "장르 추가 실패\n" . $err, "/admin/thema/$themaId");
     }
   }
 }
