@@ -36,7 +36,6 @@ class ThemaGenres extends BaseModel
   public static function deleteThemaId($id)
   {
     $stmt = self::db()->prepare("DELETE FROM thema_genres WHERE thema_id = ?");
-    $stmt->execute([$id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->execute([$id]);
   }
 }
