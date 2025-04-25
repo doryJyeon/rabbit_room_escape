@@ -16,3 +16,12 @@
   </div>
 
   <main>
+    <section class="w-100">
+      <?php if (isset($bannerComment)) : ?>
+        <article class="main-banner <?= $activeUrl === "index" ? "banner-bic" : "" ?>">
+          <div class="benner-gradient"></div>
+          <p class="ff-pan text-warning fs-lg lh-1s benner-font">
+            <?= $bannerComment; ?>
+          </p>
+        </article>
+      <?php endif; ?>

@@ -54,12 +54,16 @@
   font-family: "Nanum Pen Script", cursive;
 }
 
+.border-bottom-double {
+  border-bottom: 4px double rgba(128, 128, 128, 0.4) !important;
+}
+
 .keep-all {
   word-break: keep-all;
 }
 
 .text-logo-color {
-  color: rgb(211,176,0);
+  color: rgb(211, 176, 0);
 }
 
 .header-logo {
@@ -94,6 +98,7 @@
   line-height: 220px;
   position: relative;
 }
+
 .main-banner.banner-bic {
   height: 400px;
   line-height: 400px;
@@ -123,12 +128,13 @@
   opacity: .5;
 }
 
-.nav-contour > li >.contour-line {
+.nav-contour>li>.contour-line {
   width: auto;
   height: auto;
   position: relative;
 }
-.nav-contour > li:not(:last-child) >.contour-line::after {
+
+.nav-contour>li:not(:last-child)>.contour-line::after {
   content: "";
   position: absolute;
   top: 50%;

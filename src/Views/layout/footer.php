@@ -1,3 +1,4 @@
+</section>
 </main>
 
 <footer class="container text-secondary text-center mt-1 mb-4">
