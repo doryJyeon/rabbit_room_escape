@@ -8,7 +8,7 @@
   </ul>
   <p class="my-4 py-2 fs-sm">
     이 홈페이지는 포트폴리오용으로 실제 운영되는 홈페이지가 아닙니다.<br />
-    <a href="/admin/" class="btn btn-sm btn-light border-info">관리자 페이지 이동</a>
+    <a href="/admin/" class="btn btn-sm btn-warning mt-1">관리자 페이지 이동</a>
   </p>
   <hr class="border-secondary">
   <p class="text-li fs-sm">Logo&copy;BrandCrowd</p>

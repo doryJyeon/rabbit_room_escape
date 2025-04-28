@@ -29,13 +29,17 @@ class AdminBaseController extends ToastMsg
     ];
     // key = 메뉴명, menu = admin/menu: url 주소
     $navs = [
+      "장르 관리" => [
+        "menu" => "genre",
+        "icon" => "bi-bookmark-star"
+      ],
       "테마 관리" => [
         "menu" => "thema",
         "icon" => "bi-house-lock"
       ],
-      "장르 관리" => [
-        "menu" => "genre",
-        "icon" => "bi-bookmark-star"
+      "예약 스케줄 관리" => [
+        "menu" => "schedule",
+        "icon" => "bi-calendar"
       ],
     ];
     // admin user 정보

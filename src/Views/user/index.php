@@ -10,7 +10,7 @@
             난이도 <?= $starHTMLs[$key] ?><br />
             <?= $value['description'] ?>
           </p>
-          <a href="/reserve/<?= $value['id'] ?>" class="btn btn-sm btn-primary">예약하기</a>
+          <a href="/reserve?t=<?= $value['id'] ?>" class="btn btn-sm btn-primary">예약하기</a>
         </div>
       </div>
     <?php endforeach; ?>

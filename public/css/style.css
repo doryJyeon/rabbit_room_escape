@@ -1,5 +1,11 @@
 :root {
   --primary-color: darkslateblue;
+  --bs-link-color-rgb: #333;
+  --bs-link-hover-color-rgb: #666;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* bootstrap 기존 style 덮어쓰기 */
@@ -38,8 +44,24 @@
   width: 70%;
 }
 
+.mw-150 {
+  max-width: 150px;
+}
+
+.mw-200 {
+  max-width: 200px;
+}
+
+.mw-300 {
+  max-width: 300px;
+}
+
 .mw-400 {
   max-width: 400px;
+}
+
+.mw-600 {
+  max-width: 600px;
 }
 
 .fs-sm {
@@ -64,6 +86,10 @@
 
 .text-logo-color {
   color: rgb(211, 176, 0);
+}
+
+.text-blue {
+  color: #0d6efd;
 }
 
 .header-logo {
@@ -167,4 +193,23 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* full calendar 달력 */
+.calendar-days {
+  cursor: pointer;
+  transition: opacity .18s;
+}
+
+.calendar-days:hover {
+  opacity: .5;
+}
+
+/* 오늘 */
+.fc-day-today {
+  background-color: #66666615 !important;
+  background-image: url("/images/logo.png");
+  background-size: auto 50%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
