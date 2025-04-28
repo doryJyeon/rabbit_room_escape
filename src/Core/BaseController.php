@@ -6,7 +6,7 @@ abstract class BaseController
 {
   private function getUrl(): string
   {
-    return explode("/", $_SERVER['REQUEST_URI'])[1] ?? "index";
+    return explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))[1] ?? "index";
   }
   protected function render(string $view = "index", array $data = []): void
   {

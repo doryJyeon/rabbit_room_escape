@@ -18,7 +18,7 @@ class Auth extends BaseModel
 
     // 로그인 성공
     // 로그인 시각 업데이트
-    $stmt = self::db()->prepare("UPDATE admins SET update_at = NOW() WHERE id = :id");
+    $stmt = self::db()->prepare("UPDATE admins SET login_at = NOW() WHERE id = :id");
     $stmt->execute([':id' => $user['id']]);
 
     // 세션 저장
@@ -80,7 +80,7 @@ class Auth extends BaseModel
         ];
 
         // 로그인 시각 업데이트
-        $stmt = self::db()->prepare("UPDATE admins SET update_at = NOW() WHERE id = :id");
+        $stmt = self::db()->prepare("UPDATE admins SET login_at = NOW() WHERE id = :id");
         $stmt->execute([':id' => $user['id']]);
         return true;
       }
