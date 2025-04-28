@@ -43,9 +43,13 @@ class Thema extends BaseModel
         t.id as thema_id,
         t.title,
         t.play_time,
-          group_concat(ts.id order by ts.time) as schedule_id,
-          group_concat(date_format(ts.time, '%H:%i') order by ts.time) as schedule_time,
-          group_concat(status order by ts.time) as schedule_status
+        t.image,
+        t.level,
+        t.persons_min,
+        t.persons_max,
+        group_concat(ts.id order by ts.time) as schedule_id,
+        group_concat(date_format(ts.time, '%H:%i') order by ts.time) as schedule_time,
+        group_concat(status order by ts.time) as schedule_status
       from thema t
       left join thema_schedule ts on t.id = ts.thema_id and ts.date = :date
     ";

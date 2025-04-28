@@ -1,7 +1,7 @@
 </section>
 </main>
 
-<footer class="container text-secondary text-center mt-1 mb-4">
+<footer class="text-secondary text-center mt-1 mb-4">
   <ul class="nav-contour nav nav-pills d-flex flex-wrap justify-content-center align-items-center border-top border-bottom py-2">
     <li class="nav-item"><a href="/reversed" class="nav-link text-dark contour-line">예약 확인/취소</a></li>
     <li class="nav-item"><a href="/" target="_blank" class="nav-link text-dark contour-line">개인정보취급방침</a></li>

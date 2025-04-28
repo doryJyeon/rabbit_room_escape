@@ -1,9 +1,8 @@
   <article class="container py-3">
-    <?php
-    foreach ($themaJoinList as $key => $value) : ?>
+    <?php foreach ($themaJoinList as $key => $value) : ?>
       <div class="row my-5">
-        <div class="col-12 col-sm-4 d-inline-block text-center px-2 <?= empty($value['image']) ? "border" : "" ?>">
-          <img class="mw-100 w-auto mb-2" src="/images/posters/<?= empty($value['image']) ? "sample.jpg" : $value['image'] ?>" alt="<?= $value['title'] ?> 포스터" />
+        <div class="col-12 col-sm-4 d-inline-block text-center px-0">
+          <img class="mw-100 w-100 h-auto" src="/images/posters/<?= empty($value['image']) ? "sample.jpg" : $value['image'] ?>" alt="<?= $value['title'] ?> 포스터" />
         </div>
         <div class="col-12 col-sm-8 d-inline-block">
           <h5 class="text-primary fw-bold pb-2 border-bottom-double">
