@@ -8,7 +8,7 @@ use Exception;
 
 class AdminMemberController extends AdminBaseController
 {
-  public function member(): void
+  public function handle(): void
   {
     $list = AdminMember::getAll();
     $this->render("admin_member", [

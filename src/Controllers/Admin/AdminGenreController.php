@@ -8,7 +8,7 @@ use Exception;
 
 class AdminGenreController extends AdminBaseController
 {
-  public function genre(): void
+  public function handle(): void
   {
     $getList = Genre::getAll();
     $this->render("genre_home", [

@@ -4,7 +4,7 @@ namespace App\Controllers\Admin;
 
 class AdminLoginController
 {
-  public function login(): void
+  public function handle(): void
   {
     extract([
       "title" => "login"

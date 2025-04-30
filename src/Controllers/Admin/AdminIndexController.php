@@ -4,9 +4,9 @@ namespace App\Controllers\Admin;
 
 use App\Core\AdminBaseController;
 
-class AdminHomeController extends AdminBaseController
+class AdminIndexController extends AdminBaseController
 {
-  public function home(): void
+  public function handle(): void
   {
     $this->render("home", [
       "title" => "Admin-Rabbit room escape"

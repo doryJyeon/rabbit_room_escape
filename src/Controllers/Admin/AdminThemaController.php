@@ -11,7 +11,7 @@ use Exception;
 
 class AdminThemaController extends AdminBaseController
 {
-  public function thema(): void
+  public function handle(): void
   {
     $getList = Thema::getAll();
     $this->render("thema_list", [

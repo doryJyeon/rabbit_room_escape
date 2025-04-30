@@ -9,7 +9,7 @@ use Exception;
 
 class AdminScheduleController extends AdminBaseController
 {
-  public function schedule(): void
+  public function handle(): void
   {
     $this->render("schedule", [
       "title" => "테마 일정"

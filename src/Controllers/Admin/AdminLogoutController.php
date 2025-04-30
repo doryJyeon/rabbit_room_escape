@@ -6,7 +6,7 @@ session_start();
 
 class AdminLogoutController
 {
-  public function logout(): void
+  public function handle(): void
   {
     session_unset();
     session_destroy();

@@ -25,7 +25,7 @@ class AdminAuthController extends ToastMsg
       error_log("[ERROR] " . $err->getMessage());
       throw $this->setToastMsg("error", $err->getMessage(), "/admin/login");
     }
-    header("Location: /admin/home");
+    header("Location: /admin/");
     exit;
   }
 }

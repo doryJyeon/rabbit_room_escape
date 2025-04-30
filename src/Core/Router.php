@@ -43,31 +43,29 @@ class Router
 
     // arr[0] === "admin" ? admin : user & 기본 홈페이지
     if (count($segments) > 0 && $segments[0] === "admin") {
-      array_shift($segments);
-      $method = $segments[0] ?? "home";
-      // admin controller === Admin*Controller.php 파일명
-      $controllerName = 'Admin' . $this->toStudlyCase($method) . 'Controller';
+      array_shift($segments); // admin 제거
+      // admin controller는 Admin{segments[0]}Controller.php 파일명으로 제작
+      $controllerName = 'Admin' . $this->toStudlyCase($segments[0] ?? "index") . 'Controller';
       $controllerClass = "App\\Controllers\\Admin\\$controllerName";
-      $this->request($segments, $httpMethod, $method, $controllerClass);
+      $this->request($segments, $httpMethod, $controllerClass);
     } else {
-      $method = "handle";
       $controllerName = $this->toStudlyCase($segments[0] ?? "index") . 'Controller';
       $controllerClass = "App\\Controllers\\User\\$controllerName";
-      $this->request($segments, $httpMethod, $method, $controllerClass);
+      $this->request($segments, $httpMethod, $controllerClass);
     }
   }
 
   private function request(
     array $segments,
     string $httpMethod,
-    string $method,
     string $controllerClass
   ): void {
     // get은 create 페이지 때문에 method 한번 더 변환(admin에서 사용)
-    if ($httpMethod === "get" && $method !== "handle") {
-      // url ex) /admin/thema == "list" method, /admin/thema/10 == 10번째 테마 상세 페이지
-      // 0번째는 lsit, 1번째는 detail || create
+    if ($httpMethod === "get") {
+      // 기본 = handle, 상세 페이지는 $segments[1]이 숫자인 경우(id), 생성 페이지는 create
+      // 0번째는 lsit(기본), 1번째는 detail || create
       // 메소드 변환
+      $method = "handle";
       $param = $segments[1] ?? null;
       if ($param) {
         // number->detail
@@ -78,9 +76,6 @@ class Router
           $method = $param;
         }
       }
-    } else if ($httpMethod === "get" && $method === "handle") {
-      // user get page
-      $method = "handle";
     } else {
       // post, patch, delete는 메소드 그대로 전달
       $method = $httpMethod;
