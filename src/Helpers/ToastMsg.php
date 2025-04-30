@@ -4,7 +4,12 @@ namespace App\Helpers;
 
 class ToastMsg
 {
-  // error || success 저장
+  /**
+   * (error || success) toast message
+   * @param string $type (error || success)
+   * @param string $msg 
+   * @param string $location "Location: $location"
+   */
   public static function setToastMsg(string $type, string $msg, string $location): void
   {
     if ($type === "error") {
@@ -21,7 +26,7 @@ class ToastMsg
   // html 반환
   public static function getToastMsg(): string
   {
-    $html = '<div class="toast-container top-0 end-0 mt-2 me-2" id="headerToast">';
+    $html = '<div class="toast-container top-0 end-0 mt-2 me-2 position-fixed" id="headerToast">';
     if (isset($_SESSION['error']) && !empty(trim($_SESSION['error']))) {
       $html .= '
       <div class="toast" role="alert" aria-atomic="true" data-bs-delay="3000">

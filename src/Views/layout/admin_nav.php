@@ -49,6 +49,3 @@
     </h1>
 
     <hr class="border-3 mt-0 border-primary bg-primary opacity-50" />
-
-    <!-- server toast message -->
-    <?php echo \App\Helpers\ToastMsg::getToastMsg(); ?>

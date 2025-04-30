@@ -19,3 +19,5 @@
 </head>
 
 <body>
+  <!-- server toast message -->
+  <?php echo \App\Helpers\ToastMsg::getToastMsg(); ?>

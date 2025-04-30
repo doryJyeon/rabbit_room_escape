@@ -10,7 +10,7 @@ function toastMsgShow(msg, type = "warning", toastId = "#bodyToast") {
   if (removeToast) removeToast.remove();
 
   const toastHTML = `
-    <div class="toast-container top-0 end-0 mt-2 me-2" id="bodyToast">
+    <div class="toast-container top-0 end-0 mt-2 me-2 position-fixed" id="bodyToast">
       <div class="toast" role="alert" aria-atomic="true" data-bs-delay="3000">
         <div class="toast-header">
           <i class="bi bi-bell text-${type} me-2"></i>
