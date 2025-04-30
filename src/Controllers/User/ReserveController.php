@@ -84,16 +84,17 @@ class ReserveController extends BaseController
       $themaPrice[$value['person']] = $value['price'];
     }
 
+    $params = [
+      "bannerComment" => "예약하기",
+      "step" => $step,
+      "date" => $date
+    ];
+
     if ($step === "2") {
-      $this->render("reserve", [
-        "bannerComment" => "예약하기",
-        "step" => $step,
-        "date" => $date,
-        "thema" => $thema,
-        "schedule" => $schedule,
-        "basePrice" => number_format($prices[0]['price'] ?? 0),
-        "price" => json_encode($themaPrice)
-      ]);
+      $params['thema'] = $thema;
+      $params['schedule'] = $schedule;
+      $params['basePrice'] = number_format($prices[0]['price'] ?? 0);
+      $params['price'] = json_encode($themaPrice);
     } else if ($step === "3") {
       // 예약 정보 완료 & 예약 정보 출력 & 예약금 받기
       $name = $_POST['name'] ?? null;
@@ -103,7 +104,7 @@ class ReserveController extends BaseController
       if (empty($name) || empty($phone) || empty($persons)) {
         $this->setToastMsg("error", "정보를 제대로 입력해주세요.", "/reserve?date=$date");
       }
-      $data = [
+      $params['data'] = [
         "themaId" => $themaId,
         "scheduleId" => $scheduleId,
         "title" => $thema['title'],
@@ -115,13 +116,6 @@ class ReserveController extends BaseController
         "name" => $name,
         "phone" => $phone
       ];
-
-      $this->render("reserve", [
-        "bannerComment" => "예약하기",
-        "step" => $step,
-        "date" => $date,
-        "data" => $data
-      ]);
     } else if ($step === "4") {
       // 최종 예약 완료(관리자 승인)
       $data = [
@@ -139,6 +133,7 @@ class ReserveController extends BaseController
       // insert
       try {
         $reservedId = Reservation::create($data);
+        ThemaSchedule::updateStatus(["status" => "close"], $scheduleId);
       } catch (Exception $err) {
         error_log("[ERROR] " . $err->getMessage());
         throw $this->setToastMsg("error", $err->getMessage(), "/reserve?date=$date");
@@ -147,12 +142,8 @@ class ReserveController extends BaseController
       $reservedData = Reservation::findId($reservedId);
       $reservedData['dayWeek'] = DayOfWeek::getDayKorean($reservedData['date']);
 
-      $this->render("reserve", [
-        "bannerComment" => "예약하기",
-        "step" => $step,
-        "date" => $date,
-        "data" => $reservedData
-      ]);
+      $params['data'] = $reservedData;
     }
+    $this->render("reserve", $params);
   }
 }

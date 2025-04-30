@@ -47,6 +47,11 @@ class ThemaSchedule extends BaseModel
     return self::db()->query($sql);
   }
 
+  public static function updateStatus($data, $id)
+  {
+    return self::update("thema_schedule", $data, $id);
+  }
+
   public static function deleteSchedule($id)
   {
     return self::delete("thema_schedule", $id);
