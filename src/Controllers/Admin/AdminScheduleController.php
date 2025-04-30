@@ -92,7 +92,7 @@ class AdminScheduleController extends AdminBaseController
     }
 
     // 스케줄 상태 체크
-    $scheduleInfo = ThemaSchedule::info($id);
+    $scheduleInfo = ThemaSchedule::findId($id);
     if ($scheduleInfo['status'] === "close") {
       $this->setToastMsg("error", "예약된 스케줄입니다.\n예약 취소 후 다시 시도해주세요.", "/admin/schedule/1&date=$date");
     }

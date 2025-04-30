@@ -4,12 +4,21 @@ namespace App\Models;
 
 use App\Models\BaseModel;
 use Exception;
+use PDO;
 
 class ThemaSchedule extends BaseModel
 {
-  public static function info($id)
+  public static function findId($id)
   {
-    return self::findById("thema_schedule", $id);
+    $stmt = self::db()->prepare(
+      "SELECT *,
+        date_format(`time`, '%H:%i') as schedule_time
+      FROM thema_schedule 
+      WHERE id = ?
+      "
+    );
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   public static function create($data)
