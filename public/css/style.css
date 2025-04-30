@@ -44,6 +44,10 @@ a {
   width: 70%;
 }
 
+.mw-80 {
+  max-width: 80px;
+}
+
 .mw-150 {
   max-width: 150px;
 }
@@ -67,6 +71,7 @@ a {
 .fs-xs {
   font-size: .8rem !important;
 }
+
 .fs-sm {
   font-size: .9rem !important;
 }
@@ -98,9 +103,11 @@ a {
 .bg-dark-2 {
   background-color: var(--bs-gray-800);
 }
+
 .bg-dark-3 {
   background-color: var(--bs-gray-700);
 }
+
 .bg-dark-4 {
   background-color: var(--bs-gray-600);
 }

@@ -2,7 +2,9 @@
 
 namespace App\Core;
 
-abstract class BaseController
+use App\Helpers\ToastMsg;
+
+abstract class BaseController extends ToastMsg
 {
   private function getUrl(): string
   {

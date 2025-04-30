@@ -37,7 +37,7 @@ class AdminMemberController extends AdminBaseController
     $data = [
       "login_id" => $login_id,
       "password" => $hashPw,
-      "tell" => $_POST['tell'] ?? null,
+      "phone" => $_POST['phone'] ?? null,
       "position" => $_POST['position']
     ];
 

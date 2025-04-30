@@ -42,7 +42,7 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">전화번호</span>
-          <input type="text" class="form-control" placeholder="-제외한 숫자만 입력" name="tell" />
+          <input type="text" class="form-control" placeholder="-제외한 숫자만 입력" name="phone" />
         </div>
       </form>
       <div class="modal-footer">
@@ -70,7 +70,7 @@
         <td><?= $item['id'] ?></td>
         <td><?= htmlspecialchars($item['login_id']) ?></td>
         <td><?= $item['position'] ?></td>
-        <td><?= $item['tell'] ?></td>
+        <td><?= $item['phone'] ?></td>
         <td>
           <form action="/admin/member" method="POST" id="member<?= $item['id'] ?>" class="d-none">
             <input type="text" name="_method" value="DELETE" />
