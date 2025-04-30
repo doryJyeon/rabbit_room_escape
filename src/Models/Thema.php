@@ -56,7 +56,7 @@ class Thema extends BaseModel
     $params = [":date" => $date];
     // 특정 테마 검색
     if (!empty($themaId)) {
-      $query .= "WHERE t.id = :thema_id";
+      $query .= "WHERE t.id = :thema_id ";
       $params[":thema_id"] = $themaId;
     }
 
