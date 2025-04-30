@@ -42,7 +42,7 @@ class AdminMemberController extends AdminBaseController
     ];
 
     // 중복 체크
-    $exists = AdminMember::findId($login_id);
+    $exists = AdminMember::findLoginId($login_id);
     if ($exists) {
       $this->setToastMsg("error", "중복된 아이디입니다.", "/admin/member");
     }

@@ -33,7 +33,7 @@
         <strong><?= $adminName ?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="/admin/logout">비밀번호 변경</a></li>
+        <li><a class="dropdown-item" href="/admin/my_page">비밀번호 변경</a></li>
         <li><a class="dropdown-item" href="/admin/logout">Sign out</a></li>
       </ul>
     </div>
@@ -42,7 +42,7 @@
   <!-- 컨텐츠 시작 -->
   <section class="w-100 m-3 rounded bg-white text-dark p-3 pt-5 overflow-y-auto">
     <h1 class="text-capitalize fw-bold text-primary">
-      <?= $activeUrl ?>
+      <?= str_replace("_", " ", $activeUrl) ?>
       <?php if (in_array($activeUrl, $creates)) { ?>
         <a class="btn btn-sm btn-primary" href="/admin/<?= $activeUrl ?>/create">추가하기</a>
       <?php } ?>

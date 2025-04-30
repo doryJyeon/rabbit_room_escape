@@ -13,12 +13,22 @@ class AdminMember extends BaseModel
 
   public static function findId($id)
   {
+    return self::findById("admins", $id);
+  }
+
+  public static function findLoginId($id)
+  {
     return self::findByColumn("admins", "login_id", $id);
   }
 
   public static function create(array $data)
   {
     return self::insert("admins", $data);
+  }
+
+  public static function updateAdmin(array $data, $id)
+  {
+    return self::update("admins", $data, $id);
   }
 
   public static function deleteAdmin($id)
