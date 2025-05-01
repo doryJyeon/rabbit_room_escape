@@ -140,7 +140,7 @@ class ReserveController extends BaseController
       // insert
       try {
         $reservedId = Reservation::create($data);
-        ThemaSchedule::updateStatus(["status" => "close"], $scheduleId);
+        ThemaSchedule::updateStatus("close", $scheduleId);
       } catch (Exception $err) {
         error_log("[ERROR] " . $err->getMessage());
         $this->setToastMsg("error", $err->getMessage(), $this->redirect);

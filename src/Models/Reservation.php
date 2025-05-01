@@ -46,6 +46,7 @@ class Reservation extends BaseModel
     $stmt = self::db()->prepare(
       "SELECT
         r.id as reservedId,
+        ts.id as scheduleId,
         r.name as user_name,
         regexp_replace(r.phone, '([0-9]{3})([0-9]{4})([0-9]{4})', '$1-$2-$3') as phone,
         r.persons,

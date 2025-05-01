@@ -110,8 +110,16 @@
     </table>
 
     <p class="fs-sm text-secondary text-center mb-5">** 예약 <?= $data['statusKo'] ?> <?= $data['updated_at'] ?> **</p>
-    <div class="text-center mb-5 pb-5">
+    <div class="mb-5 pb-5 d-flex gap-2 justify-content-center">
       <a href="/" class="btn rounded-0 btn-secondary fw-bold"><i class="bi bi-arrow-left me-2"></i>메인화면</a>
+      <?php if ($data['status'] !== "canceled" && $data['status'] !== "denied") : ?>
+        <form action="/reserve_detail" method="POST">
+          <button type="submit" class="btn rounded-0 btn-secondary fw-bold btn-danger"><i class="bi bi-x-lg me-2"></i>취소요청</button>
+          <input type="hidden" name="rId" value="<?= $data['reservedId'] ?>" />
+          <input type="hidden" name="sId" value="<?= $data['scheduleId'] ?>" />
+          <input type="hidden" name="_method" value="PATCH" />
+        </form>
+      <?php endif; ?>
     </div>
   <?php endif;  ?>
 </div>

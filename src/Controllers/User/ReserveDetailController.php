@@ -6,6 +6,8 @@ use App\Core\BaseController;
 use App\Helpers\DayOfWeek;
 use App\Helpers\ReservedStatus;
 use App\Models\Reservation;
+use App\Models\ThemaSchedule;
+use Exception;
 
 class ReserveDetailController extends BaseController
 {
@@ -56,5 +58,24 @@ class ReserveDetailController extends BaseController
       // 예약자 정보 입력
     }
     $this->render("reserve_detail", $params);
+  }
+
+  /**
+   * 사용자 취소
+   */
+  public function update()
+  {
+    $scheduleId = $_POST['sId'] ?? null;
+    if (!$scheduleId) {
+      $this->setToastMsg("error", "연결된 예약 일정 정보를 찾을 수 없습니다.\n문제가 지속될 시 고객센터로 문의해주세요.", $this->redirect);
+    }
+    try {
+      Reservation::updateStatus("canceled", $this->reservedId);
+      ThemaSchedule::updateStatus("open", $scheduleId);
+    } catch (Exception $err) {
+      error_log("[ERROR] " . $err->getMessage());
+      $this->setToastMsg("error", $err->getMessage(), $this->redirect);
+    }
+    $this->setToastMsg("success", "취소 요청이 전달되었습니다.\n예약금은 일주일 내 환불 예정입니다.", "/");
   }
 }
