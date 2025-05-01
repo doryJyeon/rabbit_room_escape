@@ -10,7 +10,7 @@
         <li class="nav-item"><a href="/rabbit_room" class="nav-link text-dark">About</a></li>
         <li class="nav-item"><a href="/thema" class="nav-link text-dark">테마</a></li>
         <li class="nav-item"><a href="/reserve" class="nav-link text-dark">예약</a></li>
-        <li class="nav-item"><a href="/question_answer" class="nav-link text-dark">Q&A</a></li>
+        <li class="nav-item"><a href="/faq" class="nav-link text-dark">F&A</a></li>
       </ul>
     </header>
   </div>

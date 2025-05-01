@@ -2,6 +2,7 @@
   --primary-color: darkslateblue;
   --bs-link-color-rgb: #333;
   --bs-link-hover-color-rgb: #666;
+  --accordion-active-bg: rgb(101, 121, 155);
 }
 
 a {
@@ -38,6 +39,11 @@ a {
   background-color: var(--primary-color) !important;
 }
 
+/* 아코디언 active title */
+.accordion-button:not(.collapsed) {
+  color: #fcfcfc;
+  background-color: var(--accordion-active-bg) !important;
+}
 
 /* 새로운 style */
 .w-70 {
