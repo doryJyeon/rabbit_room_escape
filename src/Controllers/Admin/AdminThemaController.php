@@ -59,7 +59,7 @@ class AdminThemaController extends AdminBaseController
       $themaId = Thema::create($data);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/thema/create");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/thema/create");
     }
 
     // price save
@@ -95,7 +95,7 @@ class AdminThemaController extends AdminBaseController
       Thema::update("thema", $data, $themaId);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/thema");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/thema");
     }
 
     // price save
@@ -124,7 +124,7 @@ class AdminThemaController extends AdminBaseController
         ]);
       }
     } catch (Exception $err) {
-      throw $this->setToastMsg("error", "금액 추가 실패\n" . $err, "/admin/thema/$themaId");
+      $this->setToastMsg("error", "금액 추가 실패\n" . $err, "/admin/thema/$themaId");
     }
   }
 
@@ -145,7 +145,7 @@ class AdminThemaController extends AdminBaseController
         ]);
       }
     } catch (Exception $err) {
-      throw $this->setToastMsg("error", "장르 추가 실패\n" . $err, "/admin/thema/$themaId");
+      $this->setToastMsg("error", "장르 추가 실패\n" . $err, "/admin/thema/$themaId");
     }
   }
 }

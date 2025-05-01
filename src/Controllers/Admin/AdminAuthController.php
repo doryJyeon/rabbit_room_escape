@@ -23,7 +23,7 @@ class AdminAuthController extends ToastMsg
       Auth::login($data);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/login");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/login");
     }
     header("Location: /admin/");
     exit;

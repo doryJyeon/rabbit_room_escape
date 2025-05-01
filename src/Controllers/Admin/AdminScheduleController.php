@@ -77,7 +77,7 @@ class AdminScheduleController extends AdminBaseController
       }
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/schedule/1&date=$date");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/schedule/1&date=$date");
     }
     $this->setToastMsg("success", "저장했습니다.", "/admin/schedule/1&date=$date");
   }
@@ -101,7 +101,7 @@ class AdminScheduleController extends AdminBaseController
       ThemaSchedule::deleteSchedule($id);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/schedule/1&date=$date");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/schedule/1&date=$date");
     }
     $this->setToastMsg("success", "삭제했습니다.", "/admin/schedule/1&date=$date");
   }

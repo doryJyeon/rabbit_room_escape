@@ -46,7 +46,7 @@ class AdminGenreController extends AdminBaseController
       ]);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/genre");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/genre");
     }
     $this->setToastMsg("success", "추가했습니다.", "/admin/genre");
   }
@@ -69,7 +69,7 @@ class AdminGenreController extends AdminBaseController
       Genre::deleteGenre($id);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/genre");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/genre");
     }
     $this->setToastMsg("success", "삭제했습니다.", "/admin/genre");
   }

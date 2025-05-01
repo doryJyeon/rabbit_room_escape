@@ -51,7 +51,7 @@ class AdminMemberController extends AdminBaseController
       AdminMember::create($data);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/member");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/member");
     }
     $this->setToastMsg("success", "추가했습니다.", "/admin/member");
   }
@@ -68,7 +68,7 @@ class AdminMemberController extends AdminBaseController
       AdminMember::deleteAdmin($id);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/member");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/member");
     }
     $this->setToastMsg("success", "삭제했습니다.", "/admin/member");
   }

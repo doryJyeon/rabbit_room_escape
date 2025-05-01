@@ -54,7 +54,7 @@ class AdminMyPageController extends AdminBaseController
       AdminMember::updateAdmin(["password" => $hashPw], $adminId);
     } catch (Exception $err) {
       error_log("[ERROR] " . $err->getMessage());
-      throw $this->setToastMsg("error", $err->getMessage(), "/admin/my_page");
+      $this->setToastMsg("error", $err->getMessage(), "/admin/my_page");
     }
     $this->setToastMsg("success", "추가했습니다.", "/admin/");
   }

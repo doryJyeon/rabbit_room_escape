@@ -13,16 +13,25 @@ use Exception;
 
 class ReserveController extends BaseController
 {
+  private ?string $step = "1";
+  private ?string $date = null;
+  private ?string $themaId = null;
+  private string $redirect = "/reserve?";
+
+  public function __construct()
+  {
+    $this->step = $_GET['step'] ?? "1";
+    $this->date = $_GET['date'] ?? date('Y-m-d');
+    $this->themaId = $_GET['t'] ?? null;
+    $this->redirect = "/reserve?date=$this->date";
+  }
+
   public function handle(): void
   {
     // step 1만 여기서, 나머지 2~4는 store
-    $step = $_GET['step'] ?? "1";
-    $themaId = $_GET['t'] ?? null;
-    $date = $_GET['date'] ?? date('Y-m-d');
-
-    if ($step === "1") {
+    if ($this->step === "1") {
       $allThema = Thema::getAll();
-      $themas = Thema::getSchedule($themaId, $date);
+      $themas = Thema::getSchedule($this->themaId, $this->date);
       $themaSchedule =  [];
       foreach ($themas as $key => $value) {
         // get star icons
@@ -45,40 +54,38 @@ class ReserveController extends BaseController
       }
       $this->render("reserve", [
         "bannerComment" => "예약하기",
-        "step" => $step,
-        "date" => $date,
+        "step" => $this->step,
+        "date" => $this->date,
         "allThema" => $allThema,
         "themas" => $themas,
         "themaSchedule" => $themaSchedule,
-        "selectThema" => $themaId,
+        "selectThema" => $this->themaId,
       ]);
     } else {
-      header("Location: /reserve?date=$date");
+      header("Location: $this->redirect");
+      exit;
     }
   }
 
   public function store(): void
   {
     // step 2, 3, 4는 여기서 처리
-    $step = $_GET['step'] ?? "1";
-    $themaId = $_GET['t'] ?? null;
-    $date = $_GET['date'] ?? date('Y-m-d');
     $scheduleId = $_POST['s'] ?? null;
 
     // 테마 스케줄 선택 완료 & 예약자 정보 받기
-    if ($themaId === null) {
-      $this->setToastMsg("error", "선택된 테마가 없습니다.", "/reserve?date=$date");
+    if ($this->themaId === null) {
+      $this->setToastMsg("error", "선택된 테마가 없습니다.", $this->redirect);
     }
     if ($scheduleId === null) {
-      $this->setToastMsg("error", "선택된 스케줄 정보가 없습니다.", "/reserve?date=$date");
+      $this->setToastMsg("error", "선택된 스케줄 정보가 없습니다.", $this->redirect);
     }
-    $thema = Thema::findId($themaId); // 테마
+    $thema = Thema::findId($this->themaId); // 테마
     $schedule = ThemaSchedule::findId($scheduleId); // 스케줄
     if ($schedule['status'] === "close") {
-      $this->setToastMsg("error", "예약 마감되었습니다.", "/reserve?date=$date");
+      $this->setToastMsg("error", "예약 마감되었습니다.", $this->redirect);
     }
     $schedule['dayWeek'] = DayOfWeek::getDayKorean($schedule['date']);
-    $prices = ThemaPrice::getPrice($themaId); // 인원수 별로 order 되서 가져옴
+    $prices = ThemaPrice::getPrice($this->themaId); // 인원수 별로 order 되서 가져옴
     $themaPrice = [];
     foreach ($prices as $key => $value) {
       $themaPrice[$value['person']] = $value['price'];
@@ -86,26 +93,26 @@ class ReserveController extends BaseController
 
     $params = [
       "bannerComment" => "예약하기",
-      "step" => $step,
-      "date" => $date
+      "step" => $this->step,
+      "date" => $this->date
     ];
 
-    if ($step === "2") {
+    if ($this->step === "2") {
       $params['thema'] = $thema;
       $params['schedule'] = $schedule;
       $params['basePrice'] = number_format($prices[0]['price'] ?? 0);
       $params['price'] = json_encode($themaPrice);
-    } else if ($step === "3") {
+    } else if ($this->step === "3") {
       // 예약 정보 완료 & 예약 정보 출력 & 예약금 받기
       $name = $_POST['name'] ?? null;
-      $phone = ($_POST['phone1'] . $_POST['phone2'] . $_POST['phone3']) ?? null;
+      $phone = (!empty($_POST['phone1']) && !empty($_POST['phone2']) && !empty($_POST['phone3'])) ? $_POST['phone1'] . $_POST['phone2'] . $_POST['phone3'] : null;
       $persons = $_POST['persons'] ?? null;
 
       if (empty($name) || empty($phone) || empty($persons)) {
-        $this->setToastMsg("error", "정보를 제대로 입력해주세요.", "/reserve?date=$date");
+        $this->setToastMsg("error", "정보를 제대로 입력해주세요.", $this->redirect);
       }
       $params['data'] = [
-        "themaId" => $themaId,
+        "themaId" => $this->themaId,
         "scheduleId" => $scheduleId,
         "title" => $thema['title'],
         "date" => $schedule['date'],
@@ -116,7 +123,7 @@ class ReserveController extends BaseController
         "name" => $name,
         "phone" => $phone
       ];
-    } else if ($step === "4") {
+    } else if ($this->step === "4") {
       // 최종 예약 완료(관리자 승인)
       $data = [
         "thema_schedule_id" => $scheduleId,
@@ -127,7 +134,7 @@ class ReserveController extends BaseController
       // 정보 체크
       foreach ($data as $key => $value) {
         if (empty($value)) {
-          $this->setToastMsg("error", "필수 정보가 누락 되었습니다.", "/reserve?date=$date");
+          $this->setToastMsg("error", "필수 정보가 누락 되었습니다.", $this->redirect);
         }
       }
       // insert
@@ -136,7 +143,7 @@ class ReserveController extends BaseController
         ThemaSchedule::updateStatus(["status" => "close"], $scheduleId);
       } catch (Exception $err) {
         error_log("[ERROR] " . $err->getMessage());
-        throw $this->setToastMsg("error", $err->getMessage(), "/reserve?date=$date");
+        $this->setToastMsg("error", $err->getMessage(), $this->redirect);
       }
       // insert Id로 예약 정보 찾기
       $reservedData = Reservation::findId($reservedId);
