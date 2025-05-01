@@ -16,9 +16,7 @@ class AdminBaseController extends ToastMsg
   }
   private function getUrl(): string
   {
-    $currentUrl = $_SERVER['REQUEST_URI'];
-    preg_match('/\/admin\/([^\/]+)/', $currentUrl, $activeUrl);
-    return $activeUrl[1] ?? "";
+    return explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))[2] ?? "index";
   }
   protected function render(string $view, array $data = []): void
   {
@@ -37,9 +35,13 @@ class AdminBaseController extends ToastMsg
         "menu" => "thema",
         "icon" => "bi-house-lock"
       ],
-      "예약 스케줄 관리" => [
+      "테마 스케줄 관리" => [
         "menu" => "schedule",
         "icon" => "bi-calendar"
+      ],
+      "예약 관리" => [
+        "menu" => "reserved",
+        "icon" => "bi-list-ul"
       ],
     ];
     // admin user 정보

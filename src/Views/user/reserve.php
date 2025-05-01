@@ -17,7 +17,7 @@
   <?php if ($step === "1") : ?>
     <!-- 테마 선택 -->
     <article>
-      <form action="/reserve?date=<?= $date ?>" method="GET" id="searchForm">
+      <form action="/reserve?" method="GET" id="searchForm">
         <label class="form-label me-2 w-auto d-inline-block">예약 날짜</label>
         <input class="form-control me-4 w-auto d-inline-block" oninput="searchReserve()" id="dateId" type="date" name="date" value="<?= $date ?>" />
         <label class="form-label me-2 w-auto d-inline-block">테마 선택</label>
