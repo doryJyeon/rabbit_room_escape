@@ -33,7 +33,7 @@ class AdminBaseController extends ToastMsg
       ],
       "테마 관리" => [
         "menu" => "thema",
-        "icon" => "bi-house-lock"
+        "icon" => "bi-book"
       ],
       "테마 스케줄 관리" => [
         "menu" => "schedule",

@@ -194,7 +194,6 @@
       // 전화번호 4자리 cut
       function cutTellNumber(e) {
         e.value = e.value.replace(/[^0-9]/g, '').slice(0, 4);
-        console.log(e.value)
       }
     </script>
 

@@ -53,7 +53,8 @@ class Reservation extends BaseModel
         ts.`date`,
         date_format(ts.`time`, '%H:%i') as time,
         t.title,
-        format(tp.price, 0) as price
+        format(tp.price, 0) as price,
+        date_format(r.updated_at, '%Y-%m-%d %H:%i') as updated_at
         from reservation r 
         left join thema_schedule ts on ts.id = r.thema_schedule_id 
         left join thema t on t.id = ts.thema_id
