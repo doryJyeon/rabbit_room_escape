@@ -13,14 +13,19 @@ abstract class BaseController extends ToastMsg
   protected function render(string $view = "index", array $data = []): void
   {
     $activeUrl = ["activeUrl" => $this->getUrl()];
-    extract(array_merge(
-      $data,
-      $activeUrl
-    ));
-    include __DIR__ . '/../Views/layout/header.php';
-    include __DIR__ . '/../Views/layout/nav.php';
-    include __DIR__ . '/../Views/user/' . $view . '.php';
-    include __DIR__ . '/../Views/layout/footer.php';
+    if ($activeUrl["activeUrl"] !== "privacy") {
+      extract(array_merge(
+        $data,
+        $activeUrl
+      ));
+      include __DIR__ . '/../Views/layout/header.php';
+      include __DIR__ . '/../Views/layout/nav.php';
+      include __DIR__ . '/../Views/user/' . $view . '.php';
+      include __DIR__ . '/../Views/layout/footer.php';
+    } else {
+      include __DIR__ . '/../Views/layout/header.php';
+      include __DIR__ . '/../Views/user/' . $view . '.php';
+    }
   }
 
   abstract public function handle(): void;
