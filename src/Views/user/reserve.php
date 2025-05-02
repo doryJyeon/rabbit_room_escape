@@ -35,7 +35,7 @@
             <h5 class="text-primary fw-bold px-0"><?= $value['title'] ?></h5>
             <p class="fs-sm border-bottom pb-2 px-0 d-flex align-center">
               <span class="me-3">난이도 :
-                <span class="text-warning mw-1 ms-1">
+                <span class="text-warning mw-1">
                   <?= $value["starHTMLs"] ?>
                 </span>
               </span>
