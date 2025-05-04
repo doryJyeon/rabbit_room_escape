@@ -9,7 +9,7 @@
           </h2>
           <div id="collapse<?= $key ?>" class="accordion-collapse collapse">
             <div class="accordion-body">
-              <?= $value[1] ?>
+              <?= nl2br(htmlspecialchars($value[1])) ?>
             </div>
           </div>
         </div>
