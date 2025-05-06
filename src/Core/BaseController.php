@@ -12,11 +12,11 @@ abstract class BaseController extends ToastMsg
   }
   protected function render(string $view = "index", array $data = []): void
   {
-    $activeUrl = ["activeUrl" => $this->getUrl()];
-    if ($activeUrl["activeUrl"] !== "privacy") {
+    $activeUrl = $this->getUrl();
+    if ($activeUrl !== "privacy") {
       extract(array_merge(
         $data,
-        $activeUrl
+        ["activeUrl" => empty($activeUrl) ? "index" : $activeUrl]
       ));
       include __DIR__ . '/../Views/layout/header.php';
       include __DIR__ . '/../Views/layout/nav.php';

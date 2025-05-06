@@ -20,7 +20,7 @@ class AdminBaseController extends ToastMsg
   }
   protected function render(string $view, array $data = []): void
   {
-    $activeUrl = ["activeUrl" => $this->getUrl()];
+    $activeUrl = $this->getUrl();
     // create 필요한 페이지 url 모음. ex) admin/thema->thema 해당 부분 일치 시 생성
     $creates = [
       "thema"
@@ -54,7 +54,7 @@ class AdminBaseController extends ToastMsg
     extract(array_merge(
       $data,
       $navs,
-      $activeUrl,
+      ["activeUrl" => empty($activeUrl) ? "index" : $activeUrl],
       $creates,
       $adminInfo
     ));

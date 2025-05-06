@@ -81,29 +81,29 @@
   </div>
 </article>
 
-<article class="bg-secondary-subtle">
-  <ul class="nav-contour nav container py-5 my-5 fs-5 fw-light d-flex justify-content-between align-items-center text-dark">
+<article class="bg-secondary-subtle mt-5 mt-md-0">
+  <ul class="nav-contour nav container py-3 my-3 fs-sm py-md-5 my-md-5 fs-md-6 fs-lg-5 fw-light d-flex justify-content-between align-items-center text-dark">
     <li class="col-6 col-md-3">
       <div class="contour-line d-flex justify-content-center align-items-center">
-        <i class="bi bi-clock-history fs-1 me-3 text-secondary"></i>
+        <i class="bi bi-clock-history fs-4 fs-md-2 fs-lg-1 me-3 text-secondary"></i>
         15분전 도착
       </div>
     </li>
     <li class="col-6 col-md-3">
-      <div class="contour-line d-flex justify-content-center align-items-center">
-        <i class="bi bi-volume-mute fs-1 me-3 text-secondary"></i>
+      <div class="contour-line no-md-contour-line d-flex justify-content-center align-items-center">
+        <i class="bi bi-volume-mute fs-4 fs-md-2 fs-lg-1 me-3 text-secondary"></i>
         누설 금지
       </div>
     </li>
     <li class="col-6 col-md-3">
       <div class="contour-line d-flex justify-content-center align-items-center">
-        <i class="bi bi-telephone-x fs-1 me-3 text-secondary"></i>
+        <i class="bi bi-telephone-x fs-4 fs-md-2 fs-lg-1 me-3 text-secondary"></i>
         휴대폰 무음
       </div>
     </li>
     <li class="col-6 col-md-3">
       <div class="contour-line d-flex justify-content-center align-items-center">
-        <i class="bi bi-bag-x fs-1 me-3 text-secondary"></i>
+        <i class="bi bi-bag-x fs-4 fs-md-2 fs-lg-1 me-3 text-secondary"></i>
         파손 주의
       </div>
     </li>

@@ -1,15 +1,15 @@
 <div class="container">
-  <ul class="nav w-100 d-flex align-items-center my-5 text-center">
-    <li class="nav-item w-25 py-3 bg-dark <?= $step === "1" ? "bg-primary" : "" ?>">
+  <ul class="nav w-100 d-flex align-items-center my-5 text-center fs-7">
+    <li class="nav-item w-25 py-2 py-sm-3 bg-dark <?= $step === "1" ? "bg-primary" : "" ?>">
       <span class="text-white">1. 테마 선택</span>
     </li>
-    <li class="nav-item w-25 py-3 bg-dark-2 <?= $step === "2" ? "bg-primary" : "" ?>">
-      <span class="text-white">2. 예약 정보 입력</span>
+    <li class="nav-item w-25 py-2 py-sm-3 bg-dark-2 <?= $step === "2" ? "bg-primary" : "" ?>">
+      <span class="text-white">2. 정보 입력</span>
     </li>
-    <li class="nav-item w-25 py-3 bg-dark-3 <?= $step === "3" ? "bg-primary" : "" ?>">
+    <li class="nav-item w-25 py-2 py-sm-3 bg-dark-3 <?= $step === "3" ? "bg-primary" : "" ?>">
       <span class="text-white">3. 결제하기</span>
     </li>
-    <li class="nav-item w-25 py-3 bg-dark-4 <?= $step === "4" ? "bg-primary" : "" ?>">
+    <li class="nav-item w-25 py-2 py-sm-3 bg-dark-4 <?= $step === "4" ? "bg-primary" : "" ?>">
       <span class="text-white">4. 예약 완료</span>
     </li>
   </ul>
@@ -17,11 +17,12 @@
   <?php if ($step === "1") : ?>
     <!-- 테마 선택 -->
     <article>
-      <form action="/reserve?" method="GET" id="searchForm">
-        <label class="form-label me-2 w-auto d-inline-block">예약 날짜</label>
-        <input class="form-control me-4 w-auto d-inline-block" oninput="searchReserve()" id="dateId" type="date" name="date" value="<?= $date ?>" />
-        <label class="form-label me-2 w-auto d-inline-block">테마 선택</label>
-        <select class="form-select w-auto d-inline-block" oninput="searchReserve()" name="t" id="tId">
+      <form action="/reserve?" method="GET" id="searchForm" class="row fs-7">
+        <label class="form-label mt-2 mb-3 w-auto col-3">예약 날짜</label>
+        <input class="form-control mb-3 w-auto col-3" oninput="searchReserve()" id="dateId" type="date" name="date" value="<?= $date ?>" />
+        <div class="col-5 d-sm-none"></div>
+        <label class="form-label mt-2 mb-3 w-auto col-3">테마 선택</label>
+        <select class="form-select mb-3 w-auto col-3" oninput="searchReserve()" name="t" id="tId">
           <option value="0">전체 테마</option>
           <?php foreach ($allThema as $key => $value) : ?>
             <option value="<?= $value['id'] ?>" <?= $value['id'] == $selectThema ? "selected" : "" ?>><?= $value['title'] ?></option>
@@ -29,7 +30,7 @@
         </select>
       </form>
 
-      <div class="my-5">
+      <div class="my-5 container">
         <?php foreach ($themas as $key => $value) : ?>
           <div class="row my-5">
             <h5 class="text-primary fw-bold px-0"><?= $value['title'] ?></h5>
@@ -43,8 +44,8 @@
               <span class="me-3">시간 : <?= $value['play_time'] ?>분</span>
             </p>
 
-            <div class="col-12 col-sm-4 d-inline-block text-center px-0 pe-4">
-              <img class="mw-100 w-100 h-auto" src="/images/posters/<?= empty($value['image']) ? "sample.jpg" : $value['image'] ?>" alt="<?= $value['title'] ?> 포스터" />
+            <div class="col-12 col-sm-4 d-inline-block text-center px-0 pe-sm-4">
+              <img class="mw-300 w-100 h-auto mb-3 mb-sm-0" src="/images/posters/<?= empty($value['image']) ? "sample.jpg" : $value['image'] ?>" alt="<?= $value['title'] ?> 포스터" />
             </div>
             <ul class="col-12 col-sm-8 d-flex flex-wrap align-content-start nav">
               <?php if (empty(array_key_first($themaSchedule[$value['thema_id']]))) : ?>
@@ -62,7 +63,7 @@
                         <input type="hidden" name="s" value="<?= $item['schedule_id'] ?>" />
                         <button type="submit" class="bg-primary text-white border-0">
                           <span class="fs-5 mb-0"><?= $item['schedule_time'] ?></span><br />
-                          <span class="fs-xs">예약가능</span>
+                          <span class="fs-sm">예약가능</span>
                         </button>
                       </form>
                     </li>

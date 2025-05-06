@@ -8,7 +8,7 @@
             </button>
           </h2>
           <div id="collapse<?= $key ?>" class="accordion-collapse collapse">
-            <div class="accordion-body">
+            <div class="accordion-body fs-7">
               <?= nl2br(htmlspecialchars($value[1])) ?>
             </div>
           </div>
