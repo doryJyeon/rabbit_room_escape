@@ -1,46 +1,111 @@
-  <article class="container py-3 mt-5 border border-danger">
-    <?php foreach ($themaList as $key => $value) : ?>
-      <div class="card col-3 d-inline-block m-2 align-top text-center">
-        <div class="card-header">
-          <img src="/images/posters/<?= empty($value['image']) ? "sample.jpg" : $value['image'] ?>" style="height:150px;" alt="<?= $value['title'] ?> 포스터" />
-        </div>
-        <div class="card-body">
-          <h5 class="card-title text-start"><?= $value['title'] ?></h5>
-          <p class="card-text overflow-hidden text-start border-bottom" style="height:150px;">
-            난이도 <?= $starHTMLs[$key] ?><br />
-            <?= $value['description'] ?>
-          </p>
-          <a href="/reserve?t=<?= $value['id'] ?>" class="btn btn-sm btn-primary">예약하기</a>
-        </div>
+<article class="container py-3 mt-5">
+  <!-- pc용 -->
+  <div class="row position-relative d-none d-lg-flex">
+    <div class="col-1">
+      <button class="position-absolute top-0 bottom-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainPc" data-bs-slide="prev">
+        <i class="bi bi-chevron-compact-left w-100 fs-1" aria-hidden="true"></i>
+        <span class="visually-hidden">Previous</span>
+      </button>
+    </div>
+    <div id="carouselMainPc" class="carousel slide col-10 p-0">
+      <div class="carousel-inner">
+        <?php $chunkThemaList = array_chunk($themaList, 2); ?>
+        <?php foreach ($chunkThemaList as $key => $chunk) : ?>
+          <div class="carousel-item <?= $key === 0 ? "active" : "" ?>">
+            <div class="d-md-flex">
+              <?php foreach ($chunk as $idx => $value) : ?>
+                <div class="d-flex w-100 w-md-50" style="height:230px;">
+                  <img
+                    class="w-auto h-100 pe-3"
+                    src="/images/posters/<?= empty($value['image']) ? "sample.jpg" : $value['image'] ?>"
+                    alt="<?= $value['title'] ?> 포스터" />
+                  <div class="d-flex flex-column pe-5px">
+                    <h5 class="fs-5 fw-bold text-dark"><?= $value['title'] ?></h5>
+                    <p class="bg-body-secondary px-2 py-1 rounded-5 fs-xs fw-bold text-secondary d-inline-block mb-2 w-auto me-auto">난이도<?= $starHTMLs[$key] ?></p>
+                    <p class="three-line keep-all fs-sm">
+                      <?= $value['description'] ?>
+                    </p>
+                    <a href="/reserve?t=<?= $value['id'] ?>" class="btn fs-xs btn-primary rounded-0 mt-auto me-auto d-inline-block w-auto px-5 py-2 fw-bold">예약하기</a>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
       </div>
-    <?php endforeach; ?>
-  </article>
+    </div>
+    <div class="col-1">
+      <button class="position-absolute top-0 bottom-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainPc" data-bs-slide="next">
+        <i class="bi bi-chevron-compact-right w-100 fs-1" aria-hidden="true"></i>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
 
-  <article class="bg-secondary-subtle">
-    <ul class="nav-contour nav container py-5 my-5 fs-5 fw-light d-flex justify-content-between align-items-center text-dark">
-      <li class="col-6 col-md-3">
-        <div class="contour-line d-flex justify-content-center align-items-center">
-          <i class="bi bi-clock-history fs-1 me-3 text-secondary"></i>
-          15분전 도착
-        </div>
-      </li>
-      <li class="col-6 col-md-3">
-        <div class="contour-line d-flex justify-content-center align-items-center">
-          <i class="bi bi-volume-mute fs-1 me-3 text-secondary"></i>
-          누설 금지
-        </div>
-      </li>
-      <li class="col-6 col-md-3">
-        <div class="contour-line d-flex justify-content-center align-items-center">
-          <i class="bi bi-telephone-x fs-1 me-3 text-secondary"></i>
-          휴대폰 무음
-        </div>
-      </li>
-      <li class="col-6 col-md-3">
-        <div class="contour-line d-flex justify-content-center align-items-center">
-          <i class="bi bi-bag-x fs-1 me-3 text-secondary"></i>
-          파손 주의
-        </div>
-      </li>
-    </ul>
-  </article>
+  <!-- mobile용 -->
+  <div class="row position-relative d-flex d-lg-none">
+    <div class="col-1">
+      <button class="position-absolute top-0 bottom-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainMobile" data-bs-slide="prev">
+        <i class="bi bi-chevron-compact-left w-100 fs-1" aria-hidden="true"></i>
+        <span class="visually-hidden">Previous</span>
+      </button>
+    </div>
+    <div id="carouselMainMobile" class="carousel slide col-10 p-0">
+      <div class="carousel-inner">
+        <?php foreach ($themaList as $key => $value) : ?>
+          <div class="carousel-item <?= $key === 0 ? "active" : "" ?>">
+            <div class="d-flex w-100 w-md-50" style="height:230px;">
+              <img
+                class="w-auto h-100 pe-3"
+                src="/images/posters/<?= empty($value['image']) ? "sample.jpg" : $value['image'] ?>"
+                alt="<?= $value['title'] ?> 포스터" />
+              <div class="d-flex flex-column pe-5px">
+                <h5 class="fs-5 fw-bold text-dark"><?= $value['title'] ?></h5>
+                <p class="bg-body-secondary px-2 py-1 rounded-5 fs-xs fw-bold text-secondary d-inline-block mb-2 w-auto me-auto">난이도<?= $starHTMLs[$key] ?></p>
+                <p class="three-line keep-all fs-sm">
+                  <?= $value['description'] ?>
+                </p>
+                <a href="/reserve?t=<?= $value['id'] ?>" class="btn fs-xs btn-primary rounded-0 mt-auto me-auto d-inline-block w-auto px-5 py-2 fw-bold">예약하기</a>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+    <div class="col-1">
+      <button class="position-absolute top-0 bottom-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainMobile" data-bs-slide="next">
+        <i class="bi bi-chevron-compact-right w-100 fs-1" aria-hidden="true"></i>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</article>
+
+<article class="bg-secondary-subtle">
+  <ul class="nav-contour nav container py-5 my-5 fs-5 fw-light d-flex justify-content-between align-items-center text-dark">
+    <li class="col-6 col-md-3">
+      <div class="contour-line d-flex justify-content-center align-items-center">
+        <i class="bi bi-clock-history fs-1 me-3 text-secondary"></i>
+        15분전 도착
+      </div>
+    </li>
+    <li class="col-6 col-md-3">
+      <div class="contour-line d-flex justify-content-center align-items-center">
+        <i class="bi bi-volume-mute fs-1 me-3 text-secondary"></i>
+        누설 금지
+      </div>
+    </li>
+    <li class="col-6 col-md-3">
+      <div class="contour-line d-flex justify-content-center align-items-center">
+        <i class="bi bi-telephone-x fs-1 me-3 text-secondary"></i>
+        휴대폰 무음
+      </div>
+    </li>
+    <li class="col-6 col-md-3">
+      <div class="contour-line d-flex justify-content-center align-items-center">
+        <i class="bi bi-bag-x fs-1 me-3 text-secondary"></i>
+        파손 주의
+      </div>
+    </li>
+  </ul>
+</article>

@@ -50,6 +50,10 @@ a {
   width: 70%;
 }
 
+.pe-5px {
+  padding-right: 5px;
+}
+
 .mw-80 {
   max-width: 80px;
 }
@@ -118,6 +122,10 @@ a {
   background-color: var(--bs-gray-600);
 }
 
+.bg-none {
+  background-color: transparent;
+}
+
 .header-logo {
   height: 66px;
 }
@@ -126,12 +134,11 @@ a {
   filter: brightness(1.12);
 }
 
-.two-line-ellipsis {
+.three-line {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .reverse-img {

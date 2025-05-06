@@ -7,7 +7,7 @@
         <div class="col-12 col-sm-8 d-inline-block">
           <h5 class="text-primary fw-bold pb-2 border-bottom-double">
             <?= $value['title'] ?>
-            <?= !empty($value['genre_name']) ? "- " . $value['genre_name'] : "" ?>
+            <span class="fs-6"><?= !empty($value['genre_name']) ? "(" . $value['genre_name'] . ")" : "" ?></span>
           </h5>
           <p class="my-3"><?= nl2br(htmlspecialchars($value['description'])) ?></p>
           <hr />
