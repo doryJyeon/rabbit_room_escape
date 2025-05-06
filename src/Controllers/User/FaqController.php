@@ -41,7 +41,7 @@ class FaqController extends BaseController
       ]
     ];
     $this->render("faq", [
-      "bannerComment" => 'F & A',
+      "bannerComment" => '자주 묻는 질문',
       "data" => $data
     ]);
   }
