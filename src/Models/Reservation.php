@@ -35,7 +35,7 @@ class Reservation extends BaseModel
       $sql .= " and t.id = :themaId ";
       $params[":themaId"] = $themaId;
     }
-    $sql .= " order by ts.`date`, ts.`time` ";
+    $sql .= " order by ts.`date` desc, ts.`time` desc";
     $stmt = self::db()->prepare($sql);
     $stmt->execute($params);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -48,6 +48,7 @@ class Reservation extends BaseModel
         r.id as reservedId,
         ts.id as scheduleId,
         r.name as user_name,
+        r.email,
         regexp_replace(r.phone, '([0-9]{3})([0-9]{4})([0-9]{4})', '$1-$2-$3') as phone,
         r.persons,
         r.status,

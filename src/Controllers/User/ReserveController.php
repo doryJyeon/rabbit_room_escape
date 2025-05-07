@@ -105,10 +105,11 @@ class ReserveController extends BaseController
     } else if ($this->step === "3") {
       // 예약 정보 완료 & 예약 정보 출력 & 예약금 받기
       $name = $_POST['name'] ?? null;
+      $email = $_POST['email'] ?? null;
       $phone = (!empty($_POST['phone1']) && !empty($_POST['phone2']) && !empty($_POST['phone3'])) ? $_POST['phone1'] . $_POST['phone2'] . $_POST['phone3'] : null;
       $persons = $_POST['persons'] ?? null;
 
-      if (empty($name) || empty($phone) || empty($persons)) {
+      if (empty($name) || empty($email) || empty($phone) || empty($persons)) {
         $this->setToastMsg("error", "정보를 제대로 입력해주세요.", $this->redirect);
       }
       $params['data'] = [
@@ -121,6 +122,7 @@ class ReserveController extends BaseController
         "price" => number_format($themaPrice[$persons] ?? 0),
         "persons" => $persons,
         "name" => $name,
+        "email" => $email,
         "phone" => $phone
       ];
     } else if ($this->step === "4") {
@@ -128,6 +130,7 @@ class ReserveController extends BaseController
       $data = [
         "thema_schedule_id" => $scheduleId,
         "name" => $_POST['name'] ?? null,
+        "email" => $_POST['email'] ?? null,
         "phone" => $_POST['phone'] ?? null,
         "persons" => $_POST['persons'] ?? null
       ];

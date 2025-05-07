@@ -116,6 +116,13 @@
             </td>
           </tr>
           <tr>
+            <th class="text-center py-3">이메일</th>
+            <td class="py-3">
+              <input type="email" name="email" class="form-control mw-150 fs-sm" required>
+              <p class="fs-xs mb-0">예약 정보가 메일로 발송됩니다. 수신 가능한 메일을 입력해주세요.</p>
+            </td>
+          </tr>
+          <tr>
             <th class="text-center py-3">연락처</th>
             <td class="py-3">
               <div class="input-group">
@@ -203,6 +210,7 @@
     <form action="/reserve?t=<?= $data['themaId'] ?>&date=<?= $date ?>&step=4" method="POST" class="pb-5">
       <input type="hidden" name="s" value="<?= $data['scheduleId'] ?>" />
       <input type="hidden" name="name" value="<?= $data['name'] ?>" />
+      <input type="hidden" name="email" value="<?= $data['email'] ?>" />
       <input type="hidden" name="phone" value="<?= $data['phone'] ?>" />
       <table class="table w-100 fs-sm">
         <colgroup>
@@ -287,6 +295,10 @@
         <tr>
           <th class="text-center py-3">예약자</th>
           <td class="py-3"><?= $data['user_name'] ?></td>
+        </tr>
+        <tr>
+          <th class="text-center py-3">이메일</th>
+          <td class="py-3"><?= $data['email'] ?></td>
         </tr>
         <tr>
           <th class="text-center py-3">연락처</th>
