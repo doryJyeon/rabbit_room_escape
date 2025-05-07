@@ -66,12 +66,23 @@ class AdminScheduleController extends AdminBaseController
     } else {
       // 다중 추가, 숫자:, 제외한 부분 replace 후 배열 변경
       $times = explode(",", preg_replace('/[^0-9:,]/', '', $_POST['times'] ?? ''));
+      // 중복 시간 체크
+      foreach ($times as $key => $value) {
+        if (ThemaSchedule::countThemaTime($data['thema_id'], $data['date'], $value, $_POST['play_time'] ?? 50) !== 0) {
+          return $this->setToastMsg("error", "$value 시간대에 스케줄이 있습니다.", "/admin/schedule/1&date=$date");
+        }
+      }
       $data["time"] = $times;
     }
 
     try {
       if ($_POST['multiple'] === "false") {
-        ThemaSchedule::create($data);
+        // 중복 시간 체크
+        if (ThemaSchedule::countThemaTime($data['thema_id'], $data['date'], $data['time'], $_POST['play_time'] ?? 50) !== 0) {
+          $this->setToastMsg("error", "해당 시간대에 스케줄이 있습니다.", "/admin/schedule/1&date=$date");
+        } else {
+          ThemaSchedule::create($data);
+        }
       } else {
         ThemaSchedule::createMulti($data);
       }

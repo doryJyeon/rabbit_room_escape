@@ -21,6 +21,29 @@ class ThemaSchedule extends BaseModel
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
+  /**
+   * insert 스케줄 시간대 안걸리는지 체크
+   */
+  public static function countThemaTime($themaId, $date, $time, $playTime)
+  {
+    $stmt = self::db()->prepare(
+      "SELECT count(1) as count
+      from thema_schedule 
+      where thema_id = :thema_id
+      and `date` = :date
+      and `time` <= addtime(time(:time), sec_to_time(:play_time * 60)) 
+      and addtime(`time`, sec_to_time(:play_time * 60)) >= time(:time) 
+      "
+    );
+    $stmt->execute([
+      ":thema_id" => $themaId,
+      ":date" => $date,
+      ":time" => $time,
+      ":play_time" => $playTime
+    ]);
+    return (int) ($stmt->fetch(PDO::FETCH_ASSOC))['count'] ?? 0;
+  }
+
   public static function create($data)
   {
     return self::insert("thema_schedule", $data);

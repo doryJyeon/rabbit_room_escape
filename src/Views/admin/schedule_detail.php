@@ -17,6 +17,7 @@
                 <input type="hidden" name="multiple" value="false" />
                 <input type="hidden" name="thema_id" value="<?= $value['thema_id'] ?>" />
                 <input type="hidden" name="date" value="<?= $_GET['date'] ?>" />
+                <input type="hidden" name="play_time" value="<?= $value['play_time'] ?>" />
                 <div class="input-group">
                   <select class="form-select" name="hour">
                     <?php for ($i = 9; $i < 24; $i++) : ?>
