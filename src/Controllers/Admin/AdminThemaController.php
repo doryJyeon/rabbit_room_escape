@@ -49,6 +49,7 @@ class AdminThemaController extends AdminBaseController
     $data = [
       "title" => $_POST['title'],
       "level" => $_POST['level'],
+      "image" => $_POST['image_name'],
       "persons_min" => $_POST['persons_min'],
       "persons_max" => $_POST['persons_max'],
       "play_time" => $_POST['play_time'],
@@ -79,6 +80,7 @@ class AdminThemaController extends AdminBaseController
     $data = [
       "title" => $_POST['title'],
       "level" => $_POST['level'],
+      "image" => $_POST['image_name'],
       "persons_min" => $_POST['persons_min'],
       "persons_max" => $_POST['persons_max'],
       "play_time" => $_POST['play_time'],

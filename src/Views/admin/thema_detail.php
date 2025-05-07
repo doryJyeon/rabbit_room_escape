@@ -11,83 +11,95 @@ $isCreate = isset($themaInfo) ? false : true;
     <input type="hidden" name="_method" value="PATCH" />
   <?php endif; ?>
 
-  <div class="input-group mb-3">
-    <span class="input-group-text fs-7">테마명 <span class="text-danger ms-1">*</span></span>
-    <input type="text" value="<?= isset($themaInfo['title']) ? $themaInfo['title'] : "" ?>" class="form-control" name="title" placeholder="입력해주세요." required />
-  </div>
-
-  <div class="input-group mb-3">
-    <label class="input-group-text fs-7">난이도 <span class="text-danger ms-1">*</span></label>
-    <select class="form-select" name="level" required>
-      <option hidden>선택해주세요.</option>
-      <?php for ($i = 1; $i <= 5; $i += 0.5) : ?>
-        <option value="<?= $i ?>" <?= (isset($themaInfo['level']) && $i == $themaInfo['level']) ? "selected" : "" ?>><?= $i ?></option>
-      <?php endfor; ?>
-    </select>
-  </div>
-
-  <div class="input-group mb-3">
-    <!-- 장르는 3개까지만 입력 가능 -->
-    <?php for ($i = 1; $i < 4; $i++) : ?>
-      <label class="input-group-text fs-7">장르<?= $i ?></label>
-      <select class="form-select fs-7 w-auto" name="gnere<?= $i ?>" id="genre<?= $i ?>" onchange="changeGenreIds();">
-        <option value="0">없음</option>
-        <?php foreach ($genreList as $key => $value) : ?>
-          <option value="<?= $value['id'] ?>" <?= (isset($connectGenres) && count($connectGenres) >= $i && $connectGenres[($i - 1)]['genre_id'] === $value['id']) ? "selected" : "" ?>>
-            <?= $value['genre_name'] ?>
-          </option>
-        <?php endforeach; ?>
-      </select>
-    <?php endfor; ?>
-  </div>
-  <input type="hidden" name="genreIds" id="genreIds" />
-
-  <div class="mb-3">
-    <div class="input-group">
-      <span class="input-group-text fs-7">플레이 시간 <span class="text-danger ms-1">*</span></span>
-      <input type="number" value="<?= isset($themaInfo['play_time']) ? $themaInfo['play_time'] : null ?>" class="form-control" name="play_time" placeholder="0" min="0" required />
+  <div class="row">
+    <div class="col-12 col-sm-4 col-md-6 text-center mb-3">
+      <img class="mw-300 w-100 h-auto" id="posterImg" src="/images/posters/<?= empty($themaInfo['image']) ? "sample.jpg" : $themaInfo['image'] ?>" alt="<?= $themaInfo['title'] ?? "" ?> 포스터" />
+      <div class="fs-xs">
+        ( 해상도 300 X 424 )<br />
+        이미지 이름이 중복되지 않도록 주의하세요!
+        <input type="file" id="imgInput" accept="image/*" placeholder="이미지 업로드" />
+        <input type="hidden" name="image_name" id="imageName" value="<?= $themaInfo['image'] ?? "" ?>" />
+      </div>
     </div>
-    <div class="form-text">분 단위로 입력해주세요.</div>
-  </div>
 
-  <div class="input-group mb-3">
-    <span class="input-group-text fs-7">테마 줄거리 <span class="text-danger ms-1">*</span></span>
-    <textarea class="form-control fs-7" rows="5" name="description" placeholder="입력해주세요." required><?= isset($themaInfo['description']) ? htmlspecialchars($themaInfo['description']) : "" ?></textarea>
-  </div>
+    <div class="col-12 col-sm-8 col-md-6">
+      <div class="input-group mb-3">
+        <span class="input-group-text fs-7">테마명 <span class="text-danger ms-1">*</span></span>
+        <input type="text" value="<?= isset($themaInfo['title']) ? $themaInfo['title'] : "" ?>" class="form-control" name="title" placeholder="입력해주세요." required />
+      </div>
 
-  <div class="input-group mb-3">
-    <label class="input-group-text fs-7">최소 인원 <span class="text-danger ms-1">*</span></label>
-    <select class="form-select" name="persons_min" id="personsMin" onchange="updatePriceFields()" required>
-      <option hidden>선택해주세요.</option>
-      <?php for ($i = 1; $i <= 4; $i++) : ?>
-        <option value="<?= $i ?>" <?= (isset($themaInfo['persons_min']) && $i == $themaInfo['persons_min']) ? "selected" : "" ?>><?= $i ?></option>
-      <?php endfor; ?>
-    </select>
-    <label class="input-group-text fs-7">최대 인원 <span class="text-danger ms-1">*</span></label>
-    <select class="form-select" name="persons_max" id="personsMax" onchange="updatePriceFields()" required>
-      <option hidden>선택해주세요.</option>
-      <?php for ($i = 1; $i <= 10; $i++) : ?>
-        <option value="<?= $i ?>" <?= (isset($themaInfo['persons_max']) && $i == $themaInfo['persons_max']) ? "selected" : "" ?>><?= $i ?></option>
-      <?php endfor; ?>
-    </select>
-  </div>
+      <div class="input-group">
+        <span class="input-group-text fs-7">플레이 시간 <span class="text-danger ms-1">*</span></span>
+        <input type="number" value="<?= isset($themaInfo['play_time']) ? $themaInfo['play_time'] : null ?>" class="form-control" name="play_time" placeholder="0" min="0" required />
+      </div>
+      <div class="fs-xs mb-3">분 단위로 입력해주세요.</div>
 
-  <strong class="col-12">인원 별 결제 금액<span class="text-danger ms-1">*</span></strong>
-  <div class="row" id="personsPrice">
-    <?php if (!$isCreate && isset($themaPrice)) : ?>
-      <?php foreach ($themaPrice as $key => $value) : ?>
-        <?php $j = $value['person']; ?>
-        <div class="col-12 col-md-6 col-lg-4 personPrices" id="personPrice<?= $j ?>">
-          <div class="input-group mb-1">
-            <label class="input-group-text fs-7"><?= $j ?>명</label>
-            <input type="hidden" name="price<?= $j ?>person" value="<?= $j ?>" />
-            <input type="text" value="<?= number_format($value['price']) ?>" oninput="formatNumber(this)" class="form-control" name="price<?= $j ?>" id="price<?= $j ?>" placeholder="총액을 입력해주세요." required />
-          </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text fs-7">난이도 <span class="text-danger ms-1">*</span></label>
+        <select class="form-select" name="level" required>
+          <option hidden>선택해주세요.</option>
+          <?php for ($i = 1; $i <= 5; $i += 0.5) : ?>
+            <option value="<?= $i ?>" <?= (isset($themaInfo['level']) && $i == $themaInfo['level']) ? "selected" : "" ?>><?= $i ?></option>
+          <?php endfor; ?>
+        </select>
+      </div>
+
+      <!-- 장르는 3개까지만 입력 가능 -->
+      <?php for ($i = 1; $i < 4; $i++) : ?>
+        <div class="input-group mb-3">
+          <label class="input-group-text fs-7">장르<?= $i ?></label>
+          <select class="form-select fs-7 w-auto" name="gnere<?= $i ?>" id="genre<?= $i ?>" onchange="changeGenreIds();">
+            <option value="0">없음</option>
+            <?php foreach ($genreList as $key => $value) : ?>
+              <option value="<?= $value['id'] ?>" <?= (isset($connectGenres) && count($connectGenres) >= $i && $connectGenres[($i - 1)]['genre_id'] === $value['id']) ? "selected" : "" ?>>
+                <?= $value['genre_name'] ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
         </div>
-      <?php endforeach; ?>
-    <?php endif; ?>
+      <?php endfor; ?>
+      <input type="hidden" name="genreIds" id="genreIds" />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text fs-7">테마 줄거리 <span class="text-danger ms-1">*</span></span>
+      <textarea class="form-control fs-7" rows="5" name="description" placeholder="입력해주세요." required><?= isset($themaInfo['description']) ? htmlspecialchars($themaInfo['description']) : "" ?></textarea>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text fs-7">최소 인원 <span class="text-danger ms-1">*</span></label>
+      <select class="form-select" name="persons_min" id="personsMin" onchange="updatePriceFields()" required>
+        <option hidden>선택해주세요.</option>
+        <?php for ($i = 1; $i <= 4; $i++) : ?>
+          <option value="<?= $i ?>" <?= (isset($themaInfo['persons_min']) && $i == $themaInfo['persons_min']) ? "selected" : "" ?>><?= $i ?></option>
+        <?php endfor; ?>
+      </select>
+      <label class="input-group-text fs-7">최대 인원 <span class="text-danger ms-1">*</span></label>
+      <select class="form-select" name="persons_max" id="personsMax" onchange="updatePriceFields()" required>
+        <option hidden>선택해주세요.</option>
+        <?php for ($i = 1; $i <= 10; $i++) : ?>
+          <option value="<?= $i ?>" <?= (isset($themaInfo['persons_max']) && $i == $themaInfo['persons_max']) ? "selected" : "" ?>><?= $i ?></option>
+        <?php endfor; ?>
+      </select>
+    </div>
+
+    <strong class="col-12">인원 별 결제 금액<span class="text-danger ms-1">*</span></strong>
+    <div class="row" id="personsPrice">
+      <?php if (!$isCreate && isset($themaPrice)) : ?>
+        <?php foreach ($themaPrice as $key => $value) : ?>
+          <?php $j = $value['person']; ?>
+          <div class="col-12 col-md-6 col-lg-4 personPrices" id="personPrice<?= $j ?>">
+            <div class="input-group mb-1">
+              <label class="input-group-text fs-7"><?= $j ?>명</label>
+              <input type="hidden" name="price<?= $j ?>person" value="<?= $j ?>" />
+              <input type="text" value="<?= number_format($value['price']) ?>" oninput="formatNumber(this)" class="form-control" name="price<?= $j ?>" id="price<?= $j ?>" placeholder="총액을 입력해주세요." required />
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+    <div class="form-text col-12 mb-3" id="priceMent">총 결제 금액을 선택해주세요.</div>
   </div>
-  <div class="form-text col-12 mb-3" id="priceMent">총 결제 금액을 선택해주세요.</div>
 </form>
 
 <div class="blcok text-center">
@@ -100,6 +112,33 @@ $isCreate = isset($themaInfo) ? false : true;
 </div>
 
 <script>
+  // 이미지 업로드(이미지 변경 즉시 업로드)
+  document.getElementById('imgInput').addEventListener('change', function() {
+    const file = this.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('dirName', 'posters');
+
+    fetch('/admin/upload', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          const img = document.getElementById('posterImg');
+          img.src = data.src_url;
+          const imgName = document.getElementById('imageName');
+          imgName.value = data.src_url.replace("/images/posters/", "");
+        } else {
+          toastMsgShow(data.message, 'error');
+        }
+      })
+      .catch(() => toastMsgShow('업로드 실패', 'error'));
+  });
+
   // 인원별 가격 input 탬플릿
   const priceTemplate = (num, value = "") => (`
     <div class="col-12 col-md-6 col-lg-4 personPrices" id="personPrice${num}">
