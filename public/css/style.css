@@ -79,6 +79,10 @@ a {
   max-width: 150px;
 }
 
+.mw-155 {
+  max-width: 155px;
+}
+
 .mw-200 {
   max-width: 200px;
 }
@@ -259,6 +263,42 @@ a {
 
 
 /* admin 전용 */
+.header-mobile {
+  height: 50px;
+}
+
+.header-pc {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  max-width: 80%;
+  z-index: 1050;
+  display: none !important;
+}
+
+.header-pc.show {
+  display: flex !important;
+}
+
+/* lg size */
+@media (min-width: 992px) {
+  .admin-header {
+    width: 20%;
+    max-width: 300px;
+  }
+
+  .header-pc {
+    position: relative;
+    right: auto;
+    left: 0;
+    width: 100%;
+    min-width: 220px;
+    display: flex !important;
+  }
+}
+
 .admin-home-bg {
   width: 100%;
   height: auto;

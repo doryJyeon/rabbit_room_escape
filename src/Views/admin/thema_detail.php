@@ -4,7 +4,7 @@ $isCreate = isset($themaInfo) ? false : true;
 ?>
 
 <h5 class="text-primary fw-bold mt-4 container"><?= $isCreate ? "새로운 테마 등록" : "테마 정보" ?></h5>
-<form action="/admin/thema" class="container" method="POST">
+<form action="/admin/thema" class="container fs-7" method="POST">
   <?php if (!$isCreate) : ?>
     <!-- update 용 -->
     <input type="hidden" name="id" value="<?= $themaInfo['id'] ?>" />
@@ -12,12 +12,12 @@ $isCreate = isset($themaInfo) ? false : true;
   <?php endif; ?>
 
   <div class="input-group mb-3">
-    <span class="input-group-text">테마명 <span class="text-danger ms-1">*</span></span>
+    <span class="input-group-text fs-7">테마명 <span class="text-danger ms-1">*</span></span>
     <input type="text" value="<?= isset($themaInfo['title']) ? $themaInfo['title'] : "" ?>" class="form-control" name="title" placeholder="입력해주세요." required />
   </div>
 
   <div class="input-group mb-3">
-    <label class="input-group-text">난이도 <span class="text-danger ms-1">*</span></label>
+    <label class="input-group-text fs-7">난이도 <span class="text-danger ms-1">*</span></label>
     <select class="form-select" name="level" required>
       <option hidden>선택해주세요.</option>
       <?php for ($i = 1; $i <= 5; $i += 0.5) : ?>
@@ -29,8 +29,8 @@ $isCreate = isset($themaInfo) ? false : true;
   <div class="input-group mb-3">
     <!-- 장르는 3개까지만 입력 가능 -->
     <?php for ($i = 1; $i < 4; $i++) : ?>
-      <label class="input-group-text">장르<?= $i ?></label>
-      <select class="form-select" name="gnere<?= $i ?>" id="genre<?= $i ?>" onchange="changeGenreIds();">
+      <label class="input-group-text fs-7">장르<?= $i ?></label>
+      <select class="form-select fs-7 w-auto" name="gnere<?= $i ?>" id="genre<?= $i ?>" onchange="changeGenreIds();">
         <option value="0">없음</option>
         <?php foreach ($genreList as $key => $value) : ?>
           <option value="<?= $value['id'] ?>" <?= (isset($connectGenres) && count($connectGenres) >= $i && $connectGenres[($i - 1)]['genre_id'] === $value['id']) ? "selected" : "" ?>>
@@ -39,32 +39,31 @@ $isCreate = isset($themaInfo) ? false : true;
         <?php endforeach; ?>
       </select>
     <?php endfor; ?>
-
-    <input type="hidden" name="genreIds" id="genreIds" />
   </div>
+  <input type="hidden" name="genreIds" id="genreIds" />
 
   <div class="mb-3">
     <div class="input-group">
-      <span class="input-group-text">플레이 시간 <span class="text-danger ms-1">*</span></span>
+      <span class="input-group-text fs-7">플레이 시간 <span class="text-danger ms-1">*</span></span>
       <input type="number" value="<?= isset($themaInfo['play_time']) ? $themaInfo['play_time'] : null ?>" class="form-control" name="play_time" placeholder="0" min="0" required />
     </div>
     <div class="form-text">분 단위로 입력해주세요.</div>
   </div>
 
   <div class="input-group mb-3">
-    <span class="input-group-text">테마 줄거리 <span class="text-danger ms-1">*</span></span>
-    <textarea class="form-control" rows="5" name="description" placeholder="입력해주세요." required><?= isset($themaInfo['description']) ? htmlspecialchars($themaInfo['description']) : "" ?></textarea>
+    <span class="input-group-text fs-7">테마 줄거리 <span class="text-danger ms-1">*</span></span>
+    <textarea class="form-control fs-7" rows="5" name="description" placeholder="입력해주세요." required><?= isset($themaInfo['description']) ? htmlspecialchars($themaInfo['description']) : "" ?></textarea>
   </div>
 
   <div class="input-group mb-3">
-    <label class="input-group-text">최소 인원 <span class="text-danger ms-1">*</span></label>
+    <label class="input-group-text fs-7">최소 인원 <span class="text-danger ms-1">*</span></label>
     <select class="form-select" name="persons_min" id="personsMin" onchange="updatePriceFields()" required>
       <option hidden>선택해주세요.</option>
       <?php for ($i = 1; $i <= 4; $i++) : ?>
         <option value="<?= $i ?>" <?= (isset($themaInfo['persons_min']) && $i == $themaInfo['persons_min']) ? "selected" : "" ?>><?= $i ?></option>
       <?php endfor; ?>
     </select>
-    <label class="input-group-text">최대 인원 <span class="text-danger ms-1">*</span></label>
+    <label class="input-group-text fs-7">최대 인원 <span class="text-danger ms-1">*</span></label>
     <select class="form-select" name="persons_max" id="personsMax" onchange="updatePriceFields()" required>
       <option hidden>선택해주세요.</option>
       <?php for ($i = 1; $i <= 10; $i++) : ?>
@@ -80,7 +79,7 @@ $isCreate = isset($themaInfo) ? false : true;
         <?php $j = $value['person']; ?>
         <div class="col-12 col-md-6 col-lg-4 personPrices" id="personPrice<?= $j ?>">
           <div class="input-group mb-1">
-            <label class="input-group-text"><?= $j ?>명</label>
+            <label class="input-group-text fs-7"><?= $j ?>명</label>
             <input type="hidden" name="price<?= $j ?>person" value="<?= $j ?>" />
             <input type="text" value="<?= number_format($value['price']) ?>" oninput="formatNumber(this)" class="form-control" name="price<?= $j ?>" id="price<?= $j ?>" placeholder="총액을 입력해주세요." required />
           </div>

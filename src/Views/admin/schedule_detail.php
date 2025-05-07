@@ -13,7 +13,7 @@
           <div class="accordion-body container">
             <!-- 추가 -->
             <div class="row">
-              <form action="/admin/schedule" method="POST" class="d-inline-block col-12 col-sm-6 mw-300">
+              <form action="/admin/schedule" method="POST" class="d-inline-block col-12 col-sm-9 col-md-6 mt-1 mw-300">
                 <input type="hidden" name="multiple" value="false" />
                 <input type="hidden" name="thema_id" value="<?= $value['thema_id'] ?>" />
                 <input type="hidden" name="date" value="<?= $_GET['date'] ?>" />
@@ -33,24 +33,26 @@
                   </button>
                 </div>
               </form>
-              <button class="btn btn-light border w-auto col-12 col-sm-6 col-md-1" type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#insertModal"
-                data-thema-id="<?= $value['thema_id'] ?>">
-                <i class="bi bi-card-list me-1"></i>다중 일정 추가
-              </button>
+              <div class="w-auto col-12 col-sm-3 col-md-6 mt-1">
+                <button class="btn btn-light border" type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#insertModal"
+                  data-thema-id="<?= $value['thema_id'] ?>">
+                  <i class="bi bi-card-list me-1"></i>다중 일정 추가
+                </button>
+              </div>
             </div>
 
-            <hr class="my-2" />
+            <hr class="my-2 row" />
             <!-- 추가된 일정 -->
             <div class="row d-flex flex-wrap g-2 mb-2">
               <?php if (!empty(array_key_first($themaSchedule[$value['thema_id']]))) : ?>
                 <?php foreach ($themaSchedule[$value['thema_id']] as $idx => $item) : ?>
-                  <form action="/admin/schedule" method="POST" id="scheduleForm<?= $item['schedule_id'] ?>" class="d-inline-block mw-200">
+                  <form action="/admin/schedule" method="POST" id="scheduleForm<?= $item['schedule_id'] ?>" class="d-inline-block mw-155">
                     <input type="hidden" name="_method" value="DELETE" />
                     <input type="hidden" name="date" value="<?= $_GET['date'] ?>" />
                     <input type="hidden" name="id" value="<?= $item['schedule_id'] ?>" />
-                    <div class="input-group col-3 col-md-1">
+                    <div class="input-group col-4 col-md-1">
                       <input type="text" value="<?= $item['schedule_time'] ?>" class="form-control" readonly>
                       <?php if ($item['schedule_status'] === "open") : ?>
                         <button onclick="deleteSchedule('scheduleForm<?= $item['schedule_id'] ?>')" class="input-group-text btn btn-danger" type="button">

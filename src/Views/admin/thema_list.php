@@ -1,6 +1,6 @@
 <p class="fs-6 text-secondary opacity-50">id를 클릭하면 수정 할 수 있습니다.</p>
 
-<table class="table table-sm text-center">
+<table class="table table-sm text-center fs-7 keep-all">
   <thead class="align-middle">
     <tr>
       <th class="col-1">id</th>

@@ -1,14 +1,16 @@
 <!-- 일자, 테마 검색 -->
-<form action="/reserve?" method="GET" id="searchForm">
-  <label class="form-label me-2 w-auto d-inline-block">예약 날짜</label>
-  <input class="form-control me-4 w-auto d-inline-block" oninput="searchReserve()" id="dateId" type="date" name="date" value="<?= $date ?>" />
-  <label class="form-label me-2 w-auto d-inline-block">테마 선택</label>
-  <select class="form-select w-auto d-inline-block" oninput="searchReserve()" name="t" id="tId">
-    <option value="0">전체 테마</option>
-    <?php foreach ($allThema as $key => $value) : ?>
-      <option value="<?= $value['id'] ?>" <?= $value['id'] == $themaId ? "selected" : "" ?>><?= $value['title'] ?></option>
-    <?php endforeach; ?>
-  </select>
+<form action="/reserve?" method="GET" id="searchForm" class="fs-7">
+  <label class="form-label me-4 mt-1 w-auto d-inline-block">예약 날짜
+    <input class="form-control w-auto d-inline-block" oninput="searchReserve()" id="dateId" type="date" name="date" value="<?= $date ?>" />
+  </label>
+  <label class="form-label mt-1 w-auto d-inline-block">테마 선택
+    <select class="form-select w-auto d-inline-block" oninput="searchReserve()" name="t" id="tId">
+      <option value="0">전체 테마</option>
+      <?php foreach ($allThema as $key => $value) : ?>
+        <option value="<?= $value['id'] ?>" <?= $value['id'] == $themaId ? "selected" : "" ?>><?= $value['title'] ?></option>
+      <?php endforeach; ?>
+    </select>
+  </label>
 </form>
 
 <hr>
@@ -58,7 +60,7 @@
 </div>
 
 <!-- 예약 내역 list -->
-<table class="table table-sm text-center container">
+<table class="table table-sm text-center container fs-7 keep-all">
   <thead class="align-middle">
     <tr>
       <th class="col-1">no.</th>
