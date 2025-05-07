@@ -19,7 +19,7 @@
     <article>
       <form action="/reserve?" method="GET" id="searchForm" class="row fs-7">
         <label class="form-label mt-2 mb-3 w-auto col-3">예약 날짜</label>
-        <input class="form-control mb-3 w-auto col-3" oninput="searchReserve()" id="dateId" type="date" name="date" value="<?= $date ?>" />
+        <input class="form-control mb-3 w-auto col-3" oninput="searchReserve()" id="dateId" type="date" name="date" value="<?= $date ?>" min="<?= date('Y-m-d') ?>" max="<?= date('Y-m-d', strtotime('+7 days')) ?>" />
         <div class="col-5 d-sm-none"></div>
         <label class="form-label mt-2 mb-3 w-auto col-3">테마 선택</label>
         <select class="form-select mb-3 w-auto col-3" oninput="searchReserve()" name="t" id="tId">
@@ -52,12 +52,7 @@
                 <p>예약 가능한 일정이 없습니다.<i class="bi bi-emoji-frown ms-2"></i></p>
               <?php else : ?>
                 <?php foreach ($themaSchedule[$value['thema_id']] as $idx => $item) : ?>
-                  <?php if ($item['schedule_status'] === "close") : ?>
-                    <li class="nav-item bg-secondary d-inline-block d-inline-block text-white text-center w-auto px-5 mx-1 mb-2">
-                      <span class="fs-5 mb-0"><?= $item['schedule_time'] ?></span><br />
-                      <span class="fs-xs">예약마감</span>
-                    </li>
-                  <?php else : ?>
+                  <?php if ($item['schedule_status'] === "open") : ?>
                     <li class="nav-item bg-primary d-inline-block text-center w-auto px-5 mx-1 mb-2">
                       <form action="/reserve?t=<?= $value['thema_id'] ?>&date=<?= $date ?>&step=2" method="POST">
                         <input type="hidden" name="s" value="<?= $item['schedule_id'] ?>" />
@@ -66,6 +61,11 @@
                           <span class="fs-sm">예약가능</span>
                         </button>
                       </form>
+                    </li>
+                  <?php else : ?>
+                    <li class="nav-item bg-secondary d-inline-block d-inline-block text-white text-center w-auto px-5 mx-1 mb-2">
+                      <span class="fs-5 mb-0"><?= $item['schedule_time'] ?></span><br />
+                      <span class="fs-xs">예약마감</span>
                     </li>
                   <?php endif; ?>
                 <?php endforeach; ?>

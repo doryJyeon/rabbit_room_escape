@@ -57,8 +57,8 @@
                           <i class="bi bi-trash me-1"></i>삭제
                         </button>
                       <?php else : ?>
-                        <button class="input-group-text btn btn-secondary" type="button">
-                          <i class="bi bi-calendar-check"></i>예약됨
+                        <button class="input-group-text btn btn-<?= $item['schedule_status'] === "close" ? "success" : "secondary" ?>" type="button">
+                          <i class="bi bi-calendar-check me-1"></i> <?= $item['schedule_status'] === "close" ? "예약됨" : "종료" ?>
                         </button>
                       <?php endif; ?>
                     </div>

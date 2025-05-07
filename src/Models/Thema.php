@@ -49,7 +49,7 @@ class Thema extends BaseModel
         t.persons_max,
         group_concat(ts.id order by ts.time) as schedule_id,
         group_concat(date_format(ts.time, '%H:%i') order by ts.time) as schedule_time,
-        group_concat(status order by ts.time) as schedule_status
+        group_concat(if(ts.status = 'open' and str_to_date(concat(ts.`date`, ' ', ts.`time`), '%Y-%m-%d %H:%i:%s') < now(), 'end', ts.status) order by ts.time) as schedule_status
       from thema t
       left join thema_schedule ts on t.id = ts.thema_id and ts.date = :date
     ";
