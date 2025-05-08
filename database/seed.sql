@@ -17,6 +17,7 @@ values
 
 
 -- 테마 insert
+-- ** AUTO_INCREMENT 1부터 시작해야 합니다.
 INSERT INTO thema 
 (image,title,description,`level`,persons_min,persons_max,play_time) 
 VALUES
@@ -40,27 +41,46 @@ VALUES
 
 
 -- 테마별 가격 insert
--- ** 테마 생성 후 thema_id 입력해서 실행해야합니다.
 insert into thema_price
 (thema_id, person, price)
 values
-(, 2, 50000),
-(, 3, 72000),
-(, 4, 90000),
-(, 5, 110000),
-(, 6, 120000)
+(1, 1, 35000),(1, 2, 50000),(1, 3, 72000),(1, 4, 90000),(1, 5, 110000),(1, 6, 126000),
+(2, 2, 56000),(2, 3, 81000),(2, 4, 104000),
+(3, 1, 36000),(3, 2, 52000),(3, 3, 75000),(3, 4, 96000),(3, 5, 115000),
+(4, 1, 33000),(4, 2, 46000),(4, 3, 66000),(4, 4, 84000),
+(5, 2, 50000),(5, 3, 72000),(5, 4, 92000),(5, 5, 110000),(5, 6, 126000),
+(6, 2, 56000),(6, 3, 81000),(6, 4, 104000),(6, 5, 125000),
+(7, 1, 36000),(7, 2, 52000),(7, 3, 75000),(7, 4, 96000),
+(8, 2, 50000),(8, 3, 72000),(8, 4, 92000),
+(9, 1, 33000),(9, 2, 46000),(9, 3, 66000),(9, 4, 84000);
 
 
 -- 테마별 스케줄 insert
--- ** 테마 생성 후 thema_id 입력, date 변경 후 실행해주세요.
+-- date는 다음날로 입력됩니다.
 insert into thema_schedule
 (thema_id, date, time)
 values
-(,'2025-05-15', '11:10'),
-(,'2025-05-15', '12:40'),
-(,'2025-05-15', '14:10'),
-(,'2025-05-15', '15:40'),
-(,'2025-05-15', '17:10'),
-(,'2025-05-15', '18:40'),
-(,'2025-05-15', '20:10'),
-(,'2025-05-15', '21:40')
+(1,date_add(curdate(), interval 1 day), '11:10'),(1,date_add(curdate(), interval 1 day), '12:40'),(1,date_add(curdate(), interval 1 day), '14:10'),(1,date_add(curdate(), interval 1 day), '15:40'),(1,date_add(curdate(), interval 1 day), '17:10'),(1,date_add(curdate(), interval 1 day), '18:40'),(1,date_add(curdate(), interval 1 day), '20:10'),(1,date_add(curdate(), interval 1 day), '21:40'),
+(2,date_add(curdate(), interval 1 day), '11:10'),(2,date_add(curdate(), interval 1 day), '12:40'),(2,date_add(curdate(), interval 1 day), '14:10'),(2,date_add(curdate(), interval 1 day), '15:40'),(2,date_add(curdate(), interval 1 day), '17:10'),(2,date_add(curdate(), interval 1 day), '18:40'),(2,date_add(curdate(), interval 1 day), '20:10'),(2,date_add(curdate(), interval 1 day), '21:40'),
+(3,date_add(curdate(), interval 1 day), '11:10'),(3,date_add(curdate(), interval 1 day), '12:40'),(3,date_add(curdate(), interval 1 day), '14:10'),(3,date_add(curdate(), interval 1 day), '15:40'),(3,date_add(curdate(), interval 1 day), '17:10'),(3,date_add(curdate(), interval 1 day), '18:40'),(3,date_add(curdate(), interval 1 day), '20:10'),(3,date_add(curdate(), interval 1 day), '21:40'),
+(4,date_add(curdate(), interval 1 day), '11:10'),(4,date_add(curdate(), interval 1 day), '12:40'),(4,date_add(curdate(), interval 1 day), '14:10'),(4,date_add(curdate(), interval 1 day), '15:40'),(4,date_add(curdate(), interval 1 day), '17:10'),(4,date_add(curdate(), interval 1 day), '18:40'),(4,date_add(curdate(), interval 1 day), '20:10'),(4,date_add(curdate(), interval 1 day), '21:40'),
+(5,date_add(curdate(), interval 1 day), '11:10'),(5,date_add(curdate(), interval 1 day), '12:40'),(5,date_add(curdate(), interval 1 day), '14:10'),(5,date_add(curdate(), interval 1 day), '15:40'),(5,date_add(curdate(), interval 1 day), '17:10'),(5,date_add(curdate(), interval 1 day), '18:40'),(5,date_add(curdate(), interval 1 day), '20:10'),(5,date_add(curdate(), interval 1 day), '21:40'),
+(6,date_add(curdate(), interval 1 day), '11:10'),(6,date_add(curdate(), interval 1 day), '12:40'),(6,date_add(curdate(), interval 1 day), '14:10'),(6,date_add(curdate(), interval 1 day), '15:40'),(6,date_add(curdate(), interval 1 day), '17:10'),(6,date_add(curdate(), interval 1 day), '18:40'),(6,date_add(curdate(), interval 1 day), '20:10'),(6,date_add(curdate(), interval 1 day), '21:40'),
+(7,date_add(curdate(), interval 1 day), '11:10'),(7,date_add(curdate(), interval 1 day), '12:40'),(7,date_add(curdate(), interval 1 day), '14:10'),(7,date_add(curdate(), interval 1 day), '15:40'),(7,date_add(curdate(), interval 1 day), '17:10'),(7,date_add(curdate(), interval 1 day), '18:40'),(7,date_add(curdate(), interval 1 day), '20:10'),(7,date_add(curdate(), interval 1 day), '21:40'),
+(8,date_add(curdate(), interval 1 day), '11:10'),(8,date_add(curdate(), interval 1 day), '12:40'),(8,date_add(curdate(), interval 1 day), '14:10'),(8,date_add(curdate(), interval 1 day), '15:40'),(8,date_add(curdate(), interval 1 day), '17:10'),(8,date_add(curdate(), interval 1 day), '18:40'),(8,date_add(curdate(), interval 1 day), '20:10'),(8,date_add(curdate(), interval 1 day), '21:40'),
+(9,date_add(curdate(), interval 1 day), '11:10'),(9,date_add(curdate(), interval 1 day), '12:40'),(9,date_add(curdate(), interval 1 day), '14:10'),(9,date_add(curdate(), interval 1 day), '15:40'),(9,date_add(curdate(), interval 1 day), '17:10'),(9,date_add(curdate(), interval 1 day), '18:40'),(9,date_add(curdate(), interval 1 day), '20:10'),(9,date_add(curdate(), interval 1 day), '21:40')
+
+
+-- 테마별 장르
+INSERT INTO rabbit_room_escape.thema_genres 
+(thema_id,genre_id) 
+VALUES
+(1,4),(1,8),
+(2,1),(2,2),(2,12),
+(3,10),(3,4),(3,1),
+(4,18),(4,11),(4,7),
+(5,6),(5,5),(5,7),
+(6,3),(6,12),(6,14),
+(7,3),(7,5),(7,1),
+(8,1),(8,8),(8,11),
+(9,6),(9,7),(9,18);
