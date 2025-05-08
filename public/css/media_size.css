@@ -1,5 +1,7 @@
 /* sm size */
 @media (min-width: 576px) {
+
+  /* font size */
   .fs-xs {
     font-size: .8rem !important;
   }
@@ -31,10 +33,17 @@
   .fs-sm-6 {
     font-size: 1rem !important;
   }
+
+  /* end font size */
+  .w-sm-33 {
+    width: calc(33.33333% - .5rem) !important;
+  }
 }
 
 /* md size */
 @media (min-width: 768px) {
+
+  /* font size */
   .fs-7 {
     font-size: 1rem !important;
   }
@@ -66,10 +75,17 @@
   .fs-md-6 {
     font-size: 1rem !important;
   }
+
+  /* end font size */
+  .text-md-left {
+    text-align: left !important;
+  }
 }
 
 /* lg size */
 @media (min-width: 992px) {
+
+  /* font size */
   .fs-lg-1 {
     font-size: calc(1.375rem + 1.5vw) !important;
   }
@@ -92,5 +108,10 @@
 
   .fs-lg-6 {
     font-size: 1rem !important;
+  }
+
+  /* end font size */
+  .w-lg-25 {
+    width: calc(25% - .5rem) !important;
   }
 }

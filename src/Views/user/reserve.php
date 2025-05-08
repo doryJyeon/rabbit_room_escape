@@ -44,16 +44,16 @@
               <span class="me-3">시간 : <?= $value['play_time'] ?>분</span>
             </p>
 
-            <div class="col-12 col-sm-4 d-inline-block text-center px-0 pe-sm-4">
+            <div class="col-12 col-sm-4 col-md-3 d-inline-block px-0 pe-sm-1 text-center text-md-left">
               <img class="mw-300 w-100 h-auto mb-3 mb-sm-0" src="/images/posters/<?= empty($value['image']) ? "sample.jpg" : $value['image'] ?>" alt="<?= $value['title'] ?> 포스터" />
             </div>
-            <ul class="col-12 col-sm-8 d-flex flex-wrap align-content-start nav">
+            <ul class="col-12 col-sm-8 col-md-9 d-flex flex-wrap f-gap-1 text-center p-0 align-content-start nav justify-content-center justify-content-md-start">
               <?php if (empty(array_key_first($themaSchedule[$value['thema_id']]))) : ?>
                 <p>예약 가능한 일정이 없습니다.<i class="bi bi-emoji-frown ms-2"></i></p>
               <?php else : ?>
                 <?php foreach ($themaSchedule[$value['thema_id']] as $idx => $item) : ?>
                   <?php if ($item['schedule_status'] === "open") : ?>
-                    <li class="nav-item bg-primary d-inline-block text-center w-auto px-5 mx-1 mb-2">
+                    <li class="nav-item bg-primary d-inline-block text-center w-auto w-sm-33 w-lg-25 px-5 px-sm-0 mx-1 mb-2">
                       <form action="/reserve?t=<?= $value['thema_id'] ?>&date=<?= $date ?>&step=2" method="POST">
                         <input type="hidden" name="s" value="<?= $item['schedule_id'] ?>" />
                         <button type="submit" class="bg-primary text-white border-0">

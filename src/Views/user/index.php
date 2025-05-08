@@ -1,8 +1,8 @@
 <article class="container py-3 mt-5">
   <!-- pc용 -->
-  <div class="row position-relative d-none d-lg-flex">
-    <div class="col-1">
-      <button class="position-absolute top-0 bottom-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainPc" data-bs-slide="prev">
+  <div class="row d-none d-lg-flex">
+    <div class="col-1 position-relative p-0">
+      <button class="position-absolute top-0 bottom-0 p-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainPc" data-bs-slide="prev">
         <i class="bi bi-chevron-compact-left w-100 fs-1" aria-hidden="true"></i>
         <span class="visually-hidden">Previous</span>
       </button>
@@ -49,8 +49,8 @@
         <?php endif; ?>
       </div>
     </div>
-    <div class="col-1">
-      <button class="position-absolute top-0 bottom-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainPc" data-bs-slide="next">
+    <div class="col-1 position-relative p-0">
+      <button class="position-absolute top-0 bottom-0 p-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainPc" data-bs-slide="next">
         <i class="bi bi-chevron-compact-right w-100 fs-1" aria-hidden="true"></i>
         <span class="visually-hidden">Next</span>
       </button>
@@ -58,9 +58,9 @@
   </div>
 
   <!-- mobile용 -->
-  <div class="row position-relative d-flex d-lg-none">
-    <div class="col-1">
-      <button class="position-absolute top-0 bottom-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainMobile" data-bs-slide="prev">
+  <div class="row d-flex d-lg-none">
+    <div class="col-1 position-relative p-0">
+      <button class="position-absolute top-0 bottom-0 p-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainMobile" data-bs-slide="prev">
         <i class="bi bi-chevron-compact-left w-100 fs-1" aria-hidden="true"></i>
         <span class="visually-hidden">Previous</span>
       </button>
@@ -80,7 +80,7 @@
                 <p class="three-line keep-all fs-sm">
                   <?= $value['description'] ?>
                 </p>
-                <a href="/reserve?t=<?= $value['id'] ?>" class="btn fs-xs btn-primary rounded-0 mt-auto me-auto d-inline-block w-auto px-5 py-2 fw-bold">예약하기</a>
+                <a href="/reserve?t=<?= $value['id'] ?>" class="btn fs-xs btn-primary rounded-0 mt-auto me-auto d-inline-block w-auto px-4 py-2 fw-bold">예약하기</a>
               </div>
             </div>
           </div>
@@ -102,8 +102,8 @@
         <?php endif; ?>
       </div>
     </div>
-    <div class="col-1">
-      <button class="position-absolute top-0 bottom-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainMobile" data-bs-slide="next">
+    <div class="col-1 position-relative p-0">
+      <button class="position-absolute top-0 bottom-0 p-0 border-0 bg-none text-secondary" type="button" data-bs-target="#carouselMainMobile" data-bs-slide="next">
         <i class="bi bi-chevron-compact-right w-100 fs-1" aria-hidden="true"></i>
         <span class="visually-hidden">Next</span>
       </button>
