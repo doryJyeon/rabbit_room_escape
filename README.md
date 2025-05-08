@@ -1,8 +1,17 @@
-# Rabbit room escape
+# 🗝 Rabbit room escape
 
 방탈출 카페 예약/관리 사이트입니다.
 
-## 프로젝트 설치 방법
+
+## 🛠 사용 기술
+|분야|사용기술|
+|-----|-----|
+|BE|PHP 8.2.12 이상, Composer 기반 OOP 구조|
+|FE|Bootstrap5, JavaScript|
+|DB|MySQL8|
+
+
+## 📦 프로젝트 설치 및 실행 방법
 1. PHP 8.2.12 이상, MySQL 8 이상, Composer 설치
 ```
 // php.ini 수정
