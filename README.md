@@ -52,3 +52,43 @@ mysql -u root -p rabbit_room_escape < database/seed.sql
 php -S localhost:8000 -t public
 ```
 
+## 구현 화면
+### user
+- main  
+![캡처_4](https://github.com/user-attachments/assets/154e7114-e901-4398-8394-274a6fe60333)
+
+---
+- thema  
+![캡처_5](https://github.com/user-attachments/assets/4f16373c-f914-405b-9673-7221a42f1439)
+
+---
+- main_mobile  
+![캡처_1](https://github.com/user-attachments/assets/7917c1c9-4a43-4042-8686-6106c0456a3d)
+
+---
+- thema_mobile  
+![캡처_2](https://github.com/user-attachments/assets/ee408892-ab6b-400e-b080-bec6d33897f8)
+
+---
+- reserve_mobile  
+![캡처_3](https://github.com/user-attachments/assets/86501a36-820a-4fd4-9ffc-2cb790b1bf27)
+
+### admin
+- main  
+![캡처_6](https://github.com/user-attachments/assets/4bd4f25d-6da2-4c46-818c-369b5bcdff6c)
+
+---
+- thema list  
+![캡처_7](https://github.com/user-attachments/assets/ac33d3a5-bb2c-4157-9292-2aa0836b2b8d)
+
+---
+- thema detail  
+![캡처_8](https://github.com/user-attachments/assets/427450f7-8120-462b-aa1a-c12887691d54)
+
+---
+- thema schedule  
+![캡처_9](https://github.com/user-attachments/assets/df8d2686-37e6-4af2-8679-163b8d183e58)
+
+
+
+
