@@ -32,6 +32,21 @@
             </div>
           </div>
         <?php endforeach; ?>
+        <?php if (count($chunkThemaList) === 0) : ?>
+          <div class="carousel-item active">
+            <div class="d-md-flex">
+              <div class="d-flex w-100 w-md-50" style="height:230px;">
+                <img class="w-auto h-100 pe-3" src="/images/posters/sample.jpg" />
+                <div class="d-flex flex-column pe-5px">
+                  <h5 class="fs-5 fw-bold text-dark">테마 준비중</h5>
+                  <p class="three-line keep-all fs-sm">
+                    아직 오픈된 테마가 없습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
     <div class="col-1">
@@ -70,6 +85,21 @@
             </div>
           </div>
         <?php endforeach; ?>
+        <?php if (count($chunkThemaList) === 0) : ?>
+          <div class="carousel-item active">
+            <div class="d-md-flex">
+              <div class="d-flex w-100 w-md-50" style="height:230px;">
+                <img class="w-auto h-100 pe-3" src="/images/posters/sample.jpg" />
+                <div class="d-flex flex-column pe-5px">
+                  <h5 class="fs-5 fw-bold text-dark">테마 준비중</h5>
+                  <p class="three-line keep-all fs-sm">
+                    아직 오픈된 테마가 없습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
     <div class="col-1">

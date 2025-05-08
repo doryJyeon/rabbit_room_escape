@@ -73,6 +73,9 @@
             </ul>
           </div>
         <?php endforeach; ?>
+        <?php if (count($themas) === 0) : ?>
+          <strong class="text-primary text-center pb-5 d-block">준비된 테마가 없습니다.</strong>
+        <?php endif; ?>
       </div>
     </article>
 

@@ -24,4 +24,11 @@
         </div>
       </div>
     <?php endforeach; ?>
+    <?php if (count($themaJoinList) === 0) : ?>
+      <div class="row my-5 pb-5 text-center">
+        <h5 class="text-primary fw-bold">
+          테마 준비중입니다.
+        </h5>
+      </div>
+    <?php endif; ?>
   </article>
