@@ -15,7 +15,11 @@
     <a href="/admin/" class="btn btn-sm btn-warning mt-2 mt-lg-1">관리자 페이지 이동</a>
   </p>
   <hr class="border-secondary">
-  <p class="text-li fs-sm">Logo&copy;BrandCrowd</p>
+  <p class="text-li fs-sm">
+    Logo&copy;BrandCrowd
+    <br>
+    Poster image &copy;Leonardo.Ai
+  </p>
 </footer>
 
 </div>
