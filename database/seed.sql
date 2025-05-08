@@ -1,13 +1,13 @@
 -- admin insert
 -- 입력된 password는 admin1234 입니다.
-insert into admins
+insert into rabbit_room_escape.admins
 (login_id, password, position)
 values
 ('admin1', '$2y$10$LXYdq6gVHYaFYuJkHKWEleYmHOzjY4NoH9iIRwDT/0/Rnpn4CKLPS', 'sys_admin')
 
 
 -- 장르 insert
-insert into genre_code 
+insert into rabbit_room_escape.genre_code 
 (genre_name) 
 values 
 ('스릴러'),('공포'),('호러'),('추리'),('수사'),
@@ -18,7 +18,7 @@ values
 
 -- 테마 insert
 -- ** AUTO_INCREMENT 1부터 시작해야 합니다.
-INSERT INTO thema 
+INSERT INTO rabbit_room_escape.thema 
 (image,title,description,`level`,persons_min,persons_max,play_time) 
 VALUES
 ('last_treasure.jpg','마지막 보물','오늘은 놀이공원 마지막 운영일.
@@ -41,7 +41,7 @@ VALUES
 
 
 -- 테마별 가격 insert
-insert into thema_price
+insert into rabbit_room_escape.thema_price
 (thema_id, person, price)
 values
 (1, 1, 35000),(1, 2, 50000),(1, 3, 72000),(1, 4, 90000),(1, 5, 110000),(1, 6, 126000),
@@ -57,7 +57,7 @@ values
 
 -- 테마별 스케줄 insert
 -- date는 다음날로 입력됩니다.
-insert into thema_schedule
+insert into rabbit_room_escape.thema_schedule
 (thema_id, date, time)
 values
 (1,date_add(curdate(), interval 1 day), '11:10'),(1,date_add(curdate(), interval 1 day), '12:40'),(1,date_add(curdate(), interval 1 day), '14:10'),(1,date_add(curdate(), interval 1 day), '15:40'),(1,date_add(curdate(), interval 1 day), '17:10'),(1,date_add(curdate(), interval 1 day), '18:40'),(1,date_add(curdate(), interval 1 day), '20:10'),(1,date_add(curdate(), interval 1 day), '21:40'),
