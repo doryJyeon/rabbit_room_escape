@@ -1,5 +1,7 @@
 # 🗝 Rabbit room escape
 
+![캡처_4 - 복사본](https://github.com/user-attachments/assets/0bdeb8de-da21-4531-8f08-9a028e65745a)
+
 방탈출 카페 예약/관리 사이트입니다.
 
 
