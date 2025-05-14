@@ -11,7 +11,7 @@ CREATE TABLE `admins` (
   `login_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login_id` (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- 장르 코드
@@ -21,7 +21,7 @@ CREATE TABLE `genre_code` (
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `genre_name` (`genre_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- 테마
@@ -37,7 +37,7 @@ CREATE TABLE `thema` (
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- 테마-장르 
@@ -58,7 +58,7 @@ CREATE TABLE `thema_price` (
   `person` tinyint NOT NULL COMMENT '플레이 인원',
   `price` int NOT NULL COMMENT '가격',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- 테마별 스케줄
@@ -72,7 +72,7 @@ CREATE TABLE `thema_schedule` (
   PRIMARY KEY (`id`),
   KEY `idx_thema_date_time` (`thema_id`,`date`,`time`),
   CONSTRAINT `fk_thema_schedule_thema_id` FOREIGN KEY (`thema_id`) REFERENCES `thema` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- 스케줄별 예약정보
@@ -90,4 +90,4 @@ CREATE TABLE `reservation` (
   KEY `idx_phone_created_at` (`phone`,`created_at`),
   KEY `fk_thema_reservation_schedule_id` (`thema_schedule_id`),
   CONSTRAINT `fk_thema_reservation_schedule_id` FOREIGN KEY (`thema_schedule_id`) REFERENCES `thema_schedule` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

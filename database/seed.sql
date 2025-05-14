@@ -3,7 +3,7 @@
 insert into rabbit_room_escape.admins
 (login_id, password, position)
 values
-('admin1', '$2y$10$LXYdq6gVHYaFYuJkHKWEleYmHOzjY4NoH9iIRwDT/0/Rnpn4CKLPS', 'sys_admin')
+('admin1', '$2y$10$LXYdq6gVHYaFYuJkHKWEleYmHOzjY4NoH9iIRwDT/0/Rnpn4CKLPS', 'sys_admin');
 
 
 -- 장르 insert
@@ -13,7 +13,7 @@ values
 ('스릴러'),('공포'),('호러'),('추리'),('수사'),
 ('판타지'),('동화'),('감성'),('드라마'),('미스터리'),
 ('힐링'),('미션'),('역사'),('시대극'),('SF'),
-('모험'),('코미디'),('로맨스')
+('모험'),('코미디'),('로맨스');
 
 
 -- 테마 insert
@@ -60,6 +60,15 @@ values
 insert into rabbit_room_escape.thema_schedule
 (thema_id, date, time)
 values
+(1, now(), '11:10'),(1, now(), '12:40'),(1, now(), '14:10'),(1, now(), '15:40'),(1, now(), '17:10'),(1, now(), '18:40'),(1, now(), '20:10'),(1, now(), '21:40'),
+(2, now(), '11:10'),(2, now(), '12:40'),(2, now(), '14:10'),(2, now(), '15:40'),(2, now(), '17:10'),(2, now(), '18:40'),(2, now(), '20:10'),(2, now(), '21:40'),
+(3, now(), '11:10'),(3, now(), '12:40'),(3, now(), '14:10'),(3, now(), '15:40'),(3, now(), '17:10'),(3, now(), '18:40'),(3, now(), '20:10'),(3, now(), '21:40'),
+(4, now(), '11:10'),(4, now(), '12:40'),(4, now(), '14:10'),(4, now(), '15:40'),(4, now(), '17:10'),(4, now(), '18:40'),(4, now(), '20:10'),(4, now(), '21:40'),
+(5, now(), '11:10'),(5, now(), '12:40'),(5, now(), '14:10'),(5, now(), '15:40'),(5, now(), '17:10'),(5, now(), '18:40'),(5, now(), '20:10'),(5, now(), '21:40'),
+(6, now(), '11:10'),(6, now(), '12:40'),(6, now(), '14:10'),(6, now(), '15:40'),(6, now(), '17:10'),(6, now(), '18:40'),(6, now(), '20:10'),(6, now(), '21:40'),
+(7, now(), '11:10'),(7, now(), '12:40'),(7, now(), '14:10'),(7, now(), '15:40'),(7, now(), '17:10'),(7, now(), '18:40'),(7, now(), '20:10'),(7, now(), '21:40'),
+(8, now(), '11:10'),(8, now(), '12:40'),(8, now(), '14:10'),(8, now(), '15:40'),(8, now(), '17:10'),(8, now(), '18:40'),(8, now(), '20:10'),(8, now(), '21:40'),
+(9, now(), '11:10'),(9, now(), '12:40'),(9, now(), '14:10'),(9, now(), '15:40'),(9, now(), '17:10'),(9, now(), '18:40'),(9, now(), '20:10'),(9, now(), '21:40'),
 (1,date_add(curdate(), interval 1 day), '11:10'),(1,date_add(curdate(), interval 1 day), '12:40'),(1,date_add(curdate(), interval 1 day), '14:10'),(1,date_add(curdate(), interval 1 day), '15:40'),(1,date_add(curdate(), interval 1 day), '17:10'),(1,date_add(curdate(), interval 1 day), '18:40'),(1,date_add(curdate(), interval 1 day), '20:10'),(1,date_add(curdate(), interval 1 day), '21:40'),
 (2,date_add(curdate(), interval 1 day), '11:10'),(2,date_add(curdate(), interval 1 day), '12:40'),(2,date_add(curdate(), interval 1 day), '14:10'),(2,date_add(curdate(), interval 1 day), '15:40'),(2,date_add(curdate(), interval 1 day), '17:10'),(2,date_add(curdate(), interval 1 day), '18:40'),(2,date_add(curdate(), interval 1 day), '20:10'),(2,date_add(curdate(), interval 1 day), '21:40'),
 (3,date_add(curdate(), interval 1 day), '11:10'),(3,date_add(curdate(), interval 1 day), '12:40'),(3,date_add(curdate(), interval 1 day), '14:10'),(3,date_add(curdate(), interval 1 day), '15:40'),(3,date_add(curdate(), interval 1 day), '17:10'),(3,date_add(curdate(), interval 1 day), '18:40'),(3,date_add(curdate(), interval 1 day), '20:10'),(3,date_add(curdate(), interval 1 day), '21:40'),
@@ -68,7 +77,7 @@ values
 (6,date_add(curdate(), interval 1 day), '11:10'),(6,date_add(curdate(), interval 1 day), '12:40'),(6,date_add(curdate(), interval 1 day), '14:10'),(6,date_add(curdate(), interval 1 day), '15:40'),(6,date_add(curdate(), interval 1 day), '17:10'),(6,date_add(curdate(), interval 1 day), '18:40'),(6,date_add(curdate(), interval 1 day), '20:10'),(6,date_add(curdate(), interval 1 day), '21:40'),
 (7,date_add(curdate(), interval 1 day), '11:10'),(7,date_add(curdate(), interval 1 day), '12:40'),(7,date_add(curdate(), interval 1 day), '14:10'),(7,date_add(curdate(), interval 1 day), '15:40'),(7,date_add(curdate(), interval 1 day), '17:10'),(7,date_add(curdate(), interval 1 day), '18:40'),(7,date_add(curdate(), interval 1 day), '20:10'),(7,date_add(curdate(), interval 1 day), '21:40'),
 (8,date_add(curdate(), interval 1 day), '11:10'),(8,date_add(curdate(), interval 1 day), '12:40'),(8,date_add(curdate(), interval 1 day), '14:10'),(8,date_add(curdate(), interval 1 day), '15:40'),(8,date_add(curdate(), interval 1 day), '17:10'),(8,date_add(curdate(), interval 1 day), '18:40'),(8,date_add(curdate(), interval 1 day), '20:10'),(8,date_add(curdate(), interval 1 day), '21:40'),
-(9,date_add(curdate(), interval 1 day), '11:10'),(9,date_add(curdate(), interval 1 day), '12:40'),(9,date_add(curdate(), interval 1 day), '14:10'),(9,date_add(curdate(), interval 1 day), '15:40'),(9,date_add(curdate(), interval 1 day), '17:10'),(9,date_add(curdate(), interval 1 day), '18:40'),(9,date_add(curdate(), interval 1 day), '20:10'),(9,date_add(curdate(), interval 1 day), '21:40')
+(9,date_add(curdate(), interval 1 day), '11:10'),(9,date_add(curdate(), interval 1 day), '12:40'),(9,date_add(curdate(), interval 1 day), '14:10'),(9,date_add(curdate(), interval 1 day), '15:40'),(9,date_add(curdate(), interval 1 day), '17:10'),(9,date_add(curdate(), interval 1 day), '18:40'),(9,date_add(curdate(), interval 1 day), '20:10'),(9,date_add(curdate(), interval 1 day), '21:40');
 
 
 -- 테마별 장르
