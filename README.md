@@ -27,11 +27,26 @@ extension=fileinfo
 ```
 git clone https://github.com/doryJyeon/rabbit_room_escape.git
 ```
-3. 의존성 설치
+3. DocumentRoot 설정
+```
+// Apache DocumentRoot 설정
+your_dir/rabbit_room_escape/public
+
+// 또는 `httpd-vhosts.conf`에 추가:
+<VirtualHost *:your_port>
+    DocumentRoot "your_dir/rabbit_room_escape/public"
+    <Directory "your_dir/rabbit_room_escape/public">
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+``` 
+4. 의존성 설치
 ```
 composer install
 ```
-4. .env 파일 제작
+5. .env 파일 제작
 ```
 // /.env
 DB_HOST=your_host
@@ -39,17 +54,17 @@ DB_NAME=rabbit_room_escape
 DB_USER=your_user
 DB_PASS=your_password
 ```
-5. MySQL 데이터베이스 생성
+6. MySQL 데이터베이스 생성
 ```
 -- MySQL 접속 후 실행
 CREATE DATABASE rabbit_room_escape DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 ```
-6. 데이터베이스 스키마 및 더미 데이터 입력
+7. 데이터베이스 스키마 및 더미 데이터 입력
 ```
 mysql -u root -p rabbit_room_escape < database/schema.sql
 mysql -u root -p rabbit_room_escape < database/seed.sql
 ```
-7. 웹 서버 실행
+8. 웹 서버 실행
 ```
 php -S localhost:8000 -t public
 ```
